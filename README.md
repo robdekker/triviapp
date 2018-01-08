@@ -13,12 +13,13 @@ In some way I want to implement a function with which users can determine if the
 
 
 *Visual sketch*  
-![]()
+![alt text](https://github.com/robdekker/triviapp/blob/master/doc/Project%20sketch.png)
 
-*Main features*  
-
-
-*MVP*  
+*Features*  
+* Users are able to login
+* Users are able to view the current and previous leaderboards
+* Users can check their personal information of their own account
+* Users get presented new questions every day and they are able to answer them
 
 
 ## Prerequisites

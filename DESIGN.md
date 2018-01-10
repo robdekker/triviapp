@@ -1,3 +1,4 @@
+## Advanced sketches
 ![Design document](https://github.com/robdekker/triviapp/blob/master/doc/Design%20document%20sketch.png)
 
 ## A list of database tables and fields (and their types)  
@@ -20,4 +21,7 @@ When a user gives the correct answer to a question, he/she receives a point and 
 Maybe I will implement something so that users will not get the same questions over and over again. I will have to save all questions that a user has fetched from the API or use something like a “Session Token”, I’m not sure if this is possible.
 
 ## A list of APIs and frameworks or plugins that you will be using to provide functionality in your app  
-As stated above, questions will be fetched from https://opentdb.com/. Here I can set different configurations per call like the amount of questions, the category (24 in total), the difficulty (easy, medium or hard) and the type of answers (true/false or multiple choice). It’s also possible to ask the user which category they want. The API has a total of 5617 questions. I don’t know if this will be a sufficient amount, but 
+As stated above, questions will be fetched from https://opentdb.com/. Here I can set different configurations per call like the amount of questions, the category (24 in total), the difficulty (easy, medium or hard) and the type of answers (true/false or multiple choice). It’s also possible to ask the user which category they want. The API has a total of 5617 questions.
+
+## Utility modules
+![utility modules](https://github.com/robdekker/triviapp/blob/master/doc/Utility%20modules.png)

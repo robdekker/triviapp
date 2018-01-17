@@ -1,0 +1,6 @@
+framework module Pods_Triviapp {
+  umbrella header "Pods-Triviapp-umbrella.h"
+
+  export *
+  module * { export * }
+}

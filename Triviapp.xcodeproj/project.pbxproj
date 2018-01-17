@@ -1,0 +1,725 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		485A3A050E6C824EFA87D143 /* Pods_TriviappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A51180E04AA0355492D2E6 /* Pods_TriviappTests.framework */; };
+		A415C2FC20080AA1007B2127 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A415C2FB20080AA1007B2127 /* GoogleService-Info.plist */; };
+		A415C2FE20081252007B2127 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415C2FD20081252007B2127 /* User.swift */; };
+		A415C301200825B6007B2127 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415C300200825B6007B2127 /* ProfileViewController.swift */; };
+		A415C3032008EC16007B2127 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415C3022008EC16007B2127 /* HomeViewController.swift */; };
+		A415C305200CC377007B2127 /* LeaderboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415C304200CC377007B2127 /* LeaderboardTableViewController.swift */; };
+		A415C307200CC3F2007B2127 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415C306200CC3F2007B2127 /* Question.swift */; };
+		A415C309200CC41B007B2127 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415C308200CC41B007B2127 /* QuestionViewController.swift */; };
+		A415C30B200CC465007B2127 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415C30A200CC465007B2127 /* ItemController.swift */; };
+		A47C54A2200D3F81009BE85E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47C549F200D3F75009BE85E /* FBSDKCoreKit.framework */; };
+		A47C54A3200D3F81009BE85E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47C54A0200D3F7C009BE85E /* FBSDKLoginKit.framework */; };
+		A47C54A4200D3F81009BE85E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47C54A1200D3F80009BE85E /* Bolts.framework */; };
+		A47C54A6200E127B009BE85E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47C54A5200E127B009BE85E /* Player.swift */; };
+		A4C06A3E20076D59002018D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C06A3D20076D59002018D7 /* AppDelegate.swift */; };
+		A4C06A4320076D59002018D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C06A4120076D59002018D7 /* Main.storyboard */; };
+		A4C06A4620076D59002018D7 /* Triviapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4C06A4420076D59002018D7 /* Triviapp.xcdatamodeld */; };
+		A4C06A4820076D59002018D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C06A4720076D59002018D7 /* Assets.xcassets */; };
+		A4C06A4B20076D59002018D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C06A4920076D59002018D7 /* LaunchScreen.storyboard */; };
+		A4C06A5620076D5A002018D7 /* TriviappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C06A5520076D5A002018D7 /* TriviappTests.swift */; };
+		A4C06A6620076FD7002018D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C06A6520076FD6002018D7 /* LoginViewController.swift */; };
+		E17B47135EE6928BB369DB64 /* Pods_Triviapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8308EC4F33DFDF76CF3F497B /* Pods_Triviapp.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A4C06A5220076D5A002018D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A4C06A3220076D59002018D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A4C06A3920076D59002018D7;
+			remoteInfo = Triviapp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03A51180E04AA0355492D2E6 /* Pods_TriviappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TriviappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08E6B930DEA9F73345E38F9B /* Pods-TriviappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TriviappTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TriviappTests/Pods-TriviappTests.debug.xcconfig"; sourceTree = "<group>"; };
+		29071942F7FF80AA3E6CB40B /* Pods-Triviapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Triviapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Triviapp/Pods-Triviapp.release.xcconfig"; sourceTree = "<group>"; };
+		8308EC4F33DFDF76CF3F497B /* Pods_Triviapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Triviapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A415C2FB20080AA1007B2127 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A415C2FD20081252007B2127 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A415C2FF20081F78007B2127 /* Triviapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Triviapp.entitlements; sourceTree = "<group>"; };
+		A415C300200825B6007B2127 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A415C3022008EC16007B2127 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A415C304200CC377007B2127 /* LeaderboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewController.swift; sourceTree = "<group>"; };
+		A415C306200CC3F2007B2127 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		A415C308200CC41B007B2127 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		A415C30A200CC465007B2127 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
+		A47C549F200D3F75009BE85E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		A47C54A0200D3F7C009BE85E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		A47C54A1200D3F80009BE85E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		A47C54A5200E127B009BE85E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		A4C06A3A20076D59002018D7 /* Triviapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Triviapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4C06A3D20076D59002018D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A4C06A4220076D59002018D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A4C06A4520076D59002018D7 /* Triviapp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Triviapp.xcdatamodel; sourceTree = "<group>"; };
+		A4C06A4720076D59002018D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A4C06A4A20076D59002018D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A4C06A4C20076D59002018D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4C06A5120076D5A002018D7 /* TriviappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TriviappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4C06A5520076D5A002018D7 /* TriviappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviappTests.swift; sourceTree = "<group>"; };
+		A4C06A5720076D5A002018D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4C06A6520076FD6002018D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AFC809D87563CF45EDA7F11F /* Pods-Triviapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Triviapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Triviapp/Pods-Triviapp.debug.xcconfig"; sourceTree = "<group>"; };
+		CF87ECB5544D84A5A4E72C55 /* Pods-TriviappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TriviappTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TriviappTests/Pods-TriviappTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4C06A3720076D59002018D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E17B47135EE6928BB369DB64 /* Pods_Triviapp.framework in Frameworks */,
+				A47C54A2200D3F81009BE85E /* FBSDKCoreKit.framework in Frameworks */,
+				A47C54A3200D3F81009BE85E /* FBSDKLoginKit.framework in Frameworks */,
+				A47C54A4200D3F81009BE85E /* Bolts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4C06A4E20076D5A002018D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				485A3A050E6C824EFA87D143 /* Pods_TriviappTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		421AF7C21D59C876DE96AA1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AFC809D87563CF45EDA7F11F /* Pods-Triviapp.debug.xcconfig */,
+				29071942F7FF80AA3E6CB40B /* Pods-Triviapp.release.xcconfig */,
+				08E6B930DEA9F73345E38F9B /* Pods-TriviappTests.debug.xcconfig */,
+				CF87ECB5544D84A5A4E72C55 /* Pods-TriviappTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		89A6C8E2D74568D183EF4FD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8308EC4F33DFDF76CF3F497B /* Pods_Triviapp.framework */,
+				03A51180E04AA0355492D2E6 /* Pods_TriviappTests.framework */,
+				A47C54A1200D3F80009BE85E /* Bolts.framework */,
+				A47C549F200D3F75009BE85E /* FBSDKCoreKit.framework */,
+				A47C54A0200D3F7C009BE85E /* FBSDKLoginKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4C06A3120076D59002018D7 = {
+			isa = PBXGroup;
+			children = (
+				A4C06A3C20076D59002018D7 /* Triviapp */,
+				A4C06A5420076D5A002018D7 /* TriviappTests */,
+				A4C06A3B20076D59002018D7 /* Products */,
+				421AF7C21D59C876DE96AA1C /* Pods */,
+				89A6C8E2D74568D183EF4FD4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A4C06A3B20076D59002018D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4C06A3A20076D59002018D7 /* Triviapp.app */,
+				A4C06A5120076D5A002018D7 /* TriviappTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4C06A3C20076D59002018D7 /* Triviapp */ = {
+			isa = PBXGroup;
+			children = (
+				A415C2FF20081F78007B2127 /* Triviapp.entitlements */,
+				A4C06A6020076E19002018D7 /* Models */,
+				A4C06A6120076E3F002018D7 /* Controllers */,
+				A4C06A6220076E53002018D7 /* Layouts */,
+				A4C06A6320076E65002018D7 /* Other */,
+				A4C06A6420076E6C002018D7 /* Supporting Files */,
+				A4C06A4720076D59002018D7 /* Assets.xcassets */,
+				A4C06A4420076D59002018D7 /* Triviapp.xcdatamodeld */,
+			);
+			path = Triviapp;
+			sourceTree = "<group>";
+		};
+		A4C06A5420076D5A002018D7 /* TriviappTests */ = {
+			isa = PBXGroup;
+			children = (
+				A4C06A5520076D5A002018D7 /* TriviappTests.swift */,
+				A4C06A5720076D5A002018D7 /* Info.plist */,
+			);
+			path = TriviappTests;
+			sourceTree = "<group>";
+		};
+		A4C06A6020076E19002018D7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A415C2FD20081252007B2127 /* User.swift */,
+				A415C306200CC3F2007B2127 /* Question.swift */,
+				A47C54A5200E127B009BE85E /* Player.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A4C06A6120076E3F002018D7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A4C06A6520076FD6002018D7 /* LoginViewController.swift */,
+				A415C3022008EC16007B2127 /* HomeViewController.swift */,
+				A415C304200CC377007B2127 /* LeaderboardTableViewController.swift */,
+				A415C300200825B6007B2127 /* ProfileViewController.swift */,
+				A415C308200CC41B007B2127 /* QuestionViewController.swift */,
+				A415C30A200CC465007B2127 /* ItemController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A4C06A6220076E53002018D7 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				A4C06A4120076D59002018D7 /* Main.storyboard */,
+				A4C06A4920076D59002018D7 /* LaunchScreen.storyboard */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
+		A4C06A6320076E65002018D7 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A4C06A3D20076D59002018D7 /* AppDelegate.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		A4C06A6420076E6C002018D7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4C06A4C20076D59002018D7 /* Info.plist */,
+				A415C2FB20080AA1007B2127 /* GoogleService-Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4C06A3920076D59002018D7 /* Triviapp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4C06A5A20076D5A002018D7 /* Build configuration list for PBXNativeTarget "Triviapp" */;
+			buildPhases = (
+				2CC2A41318572E1230217CF0 /* [CP] Check Pods Manifest.lock */,
+				A4C06A3620076D59002018D7 /* Sources */,
+				A4C06A3720076D59002018D7 /* Frameworks */,
+				A4C06A3820076D59002018D7 /* Resources */,
+				93DD8C841DD9456735710CA9 /* [CP] Embed Pods Frameworks */,
+				563075C29D1413EF4EFCFA88 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Triviapp;
+			productName = Triviapp;
+			productReference = A4C06A3A20076D59002018D7 /* Triviapp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A4C06A5020076D5A002018D7 /* TriviappTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4C06A5D20076D5A002018D7 /* Build configuration list for PBXNativeTarget "TriviappTests" */;
+			buildPhases = (
+				4A5319DFDDC02297E8D25488 /* [CP] Check Pods Manifest.lock */,
+				A4C06A4D20076D5A002018D7 /* Sources */,
+				A4C06A4E20076D5A002018D7 /* Frameworks */,
+				A4C06A4F20076D5A002018D7 /* Resources */,
+				0F3F03B1A0C83FB869711F00 /* [CP] Embed Pods Frameworks */,
+				0CF1DF9F279787C83BF9B7A5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A4C06A5320076D5A002018D7 /* PBXTargetDependency */,
+			);
+			name = TriviappTests;
+			productName = TriviappTests;
+			productReference = A4C06A5120076D5A002018D7 /* TriviappTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4C06A3220076D59002018D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Rob Dekker";
+				TargetAttributes = {
+					A4C06A3920076D59002018D7 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+					A4C06A5020076D5A002018D7 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A4C06A3920076D59002018D7;
+					};
+				};
+			};
+			buildConfigurationList = A4C06A3520076D59002018D7 /* Build configuration list for PBXProject "Triviapp" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A4C06A3120076D59002018D7;
+			productRefGroup = A4C06A3B20076D59002018D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4C06A3920076D59002018D7 /* Triviapp */,
+				A4C06A5020076D5A002018D7 /* TriviappTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4C06A3820076D59002018D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A415C2FC20080AA1007B2127 /* GoogleService-Info.plist in Resources */,
+				A4C06A4B20076D59002018D7 /* LaunchScreen.storyboard in Resources */,
+				A4C06A4820076D59002018D7 /* Assets.xcassets in Resources */,
+				A4C06A4320076D59002018D7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4C06A4F20076D5A002018D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0CF1DF9F279787C83BF9B7A5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TriviappTests/Pods-TriviappTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0F3F03B1A0C83FB869711F00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TriviappTests/Pods-TriviappTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2CC2A41318572E1230217CF0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Triviapp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4A5319DFDDC02297E8D25488 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TriviappTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		563075C29D1413EF4EFCFA88 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Triviapp/Pods-Triviapp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93DD8C841DD9456735710CA9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Triviapp/Pods-Triviapp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Triviapp/Pods-Triviapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4C06A3620076D59002018D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A47C54A6200E127B009BE85E /* Player.swift in Sources */,
+				A415C2FE20081252007B2127 /* User.swift in Sources */,
+				A415C307200CC3F2007B2127 /* Question.swift in Sources */,
+				A4C06A6620076FD7002018D7 /* LoginViewController.swift in Sources */,
+				A415C305200CC377007B2127 /* LeaderboardTableViewController.swift in Sources */,
+				A415C301200825B6007B2127 /* ProfileViewController.swift in Sources */,
+				A4C06A3E20076D59002018D7 /* AppDelegate.swift in Sources */,
+				A4C06A4620076D59002018D7 /* Triviapp.xcdatamodeld in Sources */,
+				A415C3032008EC16007B2127 /* HomeViewController.swift in Sources */,
+				A415C30B200CC465007B2127 /* ItemController.swift in Sources */,
+				A415C309200CC41B007B2127 /* QuestionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4C06A4D20076D5A002018D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4C06A5620076D5A002018D7 /* TriviappTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A4C06A5320076D5A002018D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A4C06A3920076D59002018D7 /* Triviapp */;
+			targetProxy = A4C06A5220076D5A002018D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A4C06A4120076D59002018D7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4C06A4220076D59002018D7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A4C06A4920076D59002018D7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4C06A4A20076D59002018D7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4C06A5820076D5A002018D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A4C06A5920076D5A002018D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4C06A5B20076D5A002018D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFC809D87563CF45EDA7F11F /* Pods-Triviapp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Triviapp/Triviapp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N8D27KM92G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Triviapp/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uniek.Triviapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A4C06A5C20076D5A002018D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29071942F7FF80AA3E6CB40B /* Pods-Triviapp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Triviapp/Triviapp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N8D27KM92G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Triviapp/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uniek.Triviapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A4C06A5E20076D5A002018D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08E6B930DEA9F73345E38F9B /* Pods-TriviappTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N8D27KM92G;
+				INFOPLIST_FILE = TriviappTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uniek.TriviappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Triviapp.app/Triviapp";
+			};
+			name = Debug;
+		};
+		A4C06A5F20076D5A002018D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF87ECB5544D84A5A4E72C55 /* Pods-TriviappTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N8D27KM92G;
+				INFOPLIST_FILE = TriviappTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uniek.TriviappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Triviapp.app/Triviapp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4C06A3520076D59002018D7 /* Build configuration list for PBXProject "Triviapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4C06A5820076D5A002018D7 /* Debug */,
+				A4C06A5920076D5A002018D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4C06A5A20076D5A002018D7 /* Build configuration list for PBXNativeTarget "Triviapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4C06A5B20076D5A002018D7 /* Debug */,
+				A4C06A5C20076D5A002018D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4C06A5D20076D5A002018D7 /* Build configuration list for PBXNativeTarget "TriviappTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4C06A5E20076D5A002018D7 /* Debug */,
+				A4C06A5F20076D5A002018D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A4C06A4420076D59002018D7 /* Triviapp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A4C06A4520076D59002018D7 /* Triviapp.xcdatamodel */,
+			);
+			currentVersion = A4C06A4520076D59002018D7 /* Triviapp.xcdatamodel */;
+			path = Triviapp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A4C06A3220076D59002018D7 /* Project object */;
+}

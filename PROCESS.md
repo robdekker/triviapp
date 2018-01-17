@@ -5,7 +5,7 @@
 * Started working on Facebook Login authentication.
 * The design of the login screen is inspirated by the login screen below (found on Google Images)
 
-<img src="https://github.com/robdekker/triviapp/blob/master/doc/processbook_image1.jpg" alt="login screen inspiration" width="100" height="200">
+<img src="doc/processbook_image1.jpg" alt="login screen inspiration">
 
 # Day 2 (tuesday 16-01)
 * Set up the tab bar controller with the different views; home, leaderboard and profile.

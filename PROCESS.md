@@ -15,4 +15,12 @@
 * Failed to push all changes to github, tried for a couple of hours to fix it.
 
 # Day 3 (wednesday 17-01)
-* Finally managed to push all files to github
+* Finally managed to push all files to github, but still some kind of bug (submodule).
+* Updated my process book on github.
+* Made a style guide and pushed it to my github repository.
+* Pushed all changes to github, still some little bug that needs to be fixed.
+* Managed to load the daily AND weekly top 10 users(!) with their scores (descending) from the user database.
+* Started to work on saving user data when new account is created with Facebook login.
+
+## Things I still want to implement in my app:
+* UIImagePicker to change profile picture

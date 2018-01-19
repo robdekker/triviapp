@@ -22,5 +22,22 @@
 * Managed to load the daily AND weekly top 10 users(!) with their scores (descending) from the user database.
 * Started to work on saving user data when new account is created with Facebook login.
 
-## Things I still want to implement in my app:
+# Day 4 (thursday 18-01)
+* Created all views from the wireflow. 
+* The user gets presented questions and corresponding answers (these are hard coded) and the score gets presented afterwards.
+* Created a PlayerDetailViewController so that users can check the profiles of the players in leaderboards.
+* Clicking on users in the leaderboard and go to user’s profile is possible.
+* Started working on API calls.
+
+# Day 5 (Friday 19-01)
+Presentation of alpha version.
+
+
+## Things I still have to implement in my app:
 * UIImagePicker to change profile picture
+* Save profile picture in Firebase Storage
+* If facebook user is still logged in when app opened, go to home screen
+* Facebook user sign out bug fix
+* Custom table view cell
+* Different amount of buttons per question
+

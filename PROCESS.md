@@ -30,7 +30,19 @@
 * Started working on API calls.
 
 # Day 5 (Friday 19-01)
-Presentation of alpha version.
+* Presentation of alpha version.
+* Tried to fix sign in/sign out bug.
+
+# Weekend 20-01/21-01
+* Made a custom table view cell to properly present the different labels in a table cell.
+* Successfully implemented API calls to fetch and show questions and their corresponding answers.
+* Implemented an unwind segue, so Sign out bug was fixed.
+* Created an UIView that gives an indication about the time that is left to answer the question.
+* Score gets updated in Firebase when user fills in a questions.
+
+# Monday 22-01
+
+
 
 
 ## Things I still have to implement in my app:
@@ -38,6 +50,6 @@ Presentation of alpha version.
 * Save profile picture in Firebase Storage
 * If facebook user is still logged in when app opened, go to home screen
 * Facebook user sign out bug fix
-* Custom table view cell
-* Different amount of buttons per question
+* Timeline to represent available time to answer question (bug fix first question)
+* Convert questions + answers to unicode
 

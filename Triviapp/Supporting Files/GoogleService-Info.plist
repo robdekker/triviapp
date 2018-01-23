@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>248458867473-j6ojiq95bsu3q9bvqetaoprsopi56uka.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.248458867473-j6ojiq95bsu3q9bvqetaoprsopi56uka</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC4yUrB0VYgEYojx2KI1bBaGvpVAbkNL7k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>248458867473</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.uniek.Triviapp</string>
+	<key>PROJECT_ID</key>
+	<string>triviapp-20440</string>
+	<key>STORAGE_BUCKET</key>
+	<string>triviapp-20440.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:248458867473:ios:8b64a1c6d2ee9311</string>
+	<key>DATABASE_URL</key>
+	<string>https://triviapp-20440.firebaseio.com</string>
+</dict>
+</plist>

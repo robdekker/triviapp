@@ -42,13 +42,13 @@
 
 # Monday 22-01
 * Timeline to represent available time to answer question (+ bug fix first question)
-* (Bug fix) answer button labels longer than button width: auto resize button label -> insert image in PROCESS.md
-* Decode questions and answers which contain html/xml entities
+* (Bug fix) answer button labels longer than button width: auto resize button label, see left/right image below
+* Decode questions and answers which contain html/xml entities, see problem at left/right image below
 * Facebook user sign out bug fix
 * Bug fixed: the app tried to load data from Firebase that was already deleted.
 
-
-
+<img src="doc/processbook_image2.jpg" alt="" width="230" height="400">
+<img src="doc/processbook_image3.jpg" alt="" width="230" height="400">
 
 ## Things I still have to implement in my app:
 * UIImagePicker to change profile picture

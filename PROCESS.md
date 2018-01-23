@@ -47,7 +47,7 @@
 * Facebook user sign out bug fix
 * Bug fixed: the app tried to load data from Firebase that was already deleted.
 
-<img src="doc/processbook_image2.jpg" alt="" width="230" height="400"><img src="doc/processbook_image3.jpg" alt="" width="230" height="400">
+<img src="doc/processbook_image2.jpg" alt="" width="230" height="400">   <img src="doc/processbook_image3.jpg" alt="" width="230" height="400">
 
 ## Things I still have to implement in my app:
 * UIImagePicker to change profile picture

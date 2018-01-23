@@ -41,6 +41,11 @@
 * Score gets updated in Firebase when user fills in a questions.
 
 # Monday 22-01
+* Timeline to represent available time to answer question (+ bug fix first question)
+* (Bug fix) answer button labels longer than button width: auto resize button label -> insert image in PROCESS.md
+* Decode questions and answers which contain html/xml entities
+* Facebook user sign out bug fix
+* Bug fixed: the app tried to load data from Firebase that was already deleted.
 
 
 
@@ -48,8 +53,10 @@
 ## Things I still have to implement in my app:
 * UIImagePicker to change profile picture
 * Save profile picture in Firebase Storage
-* If facebook user is still logged in when app opened, go to home screen
-* Facebook user sign out bug fix
-* Timeline to represent available time to answer question (bug fix first question)
-* Convert questions + answers to unicode
+* Bug fix: ScoreView to HomeView unwind segue
+* Actually do something when timer ends
+* Provide feedback when question is answered (or not answered)
+* Save fetched questions in database, so that every user gets the same questions
+* Get local time to reset daily points every day
+* Complete list of decode entities
 

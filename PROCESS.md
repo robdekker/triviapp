@@ -49,6 +49,16 @@
 
 <img src="doc/processbook_image2.jpg" alt="" width="230" height="400">   <img src="doc/processbook_image3.jpg" alt="" width="230" height="400">
 
+# Tuesday 23-01
+* Tried to stop UIView.animate when user taps a button (not possible)
+* Gave button labels some padding so that the answer fits in place
+* Table view links to profile view and checks whether it is another player or the current user before setting the labels
+* Implemented a timer so that I can write functions when time is over
+* Still bug at score to home unwind segue 
+
+# Wednesday 24-01
+
+
 ## Things I still have to implement in my app:
 * UIImagePicker to change profile picture
 * Save profile picture in Firebase Storage

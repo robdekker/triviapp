@@ -144,13 +144,13 @@ class LeaderboardTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "listToDetail" {
             
-            let playerDetailViewController = segue.destination as! PlayerDetailViewController
+            let profileViewController = segue.destination as! ProfileViewController
             let index = tableView.indexPathForSelectedRow!.row
             
             if leaderboardSegmentedControl.selectedSegmentIndex == 0 {
-                playerDetailViewController.player = dailyTopPlayers[index]
+                profileViewController.player = dailyTopPlayers[index]
             } else {
-                playerDetailViewController.player = weeklyTopPlayers[index]
+                profileViewController.player = weeklyTopPlayers[index]
             }
         }
     }

@@ -29,4 +29,15 @@ struct Question {
         self.incorrect_answers = incorrect_answers
         self.ref = nil
     }
+    
+    func toAnyObject() -> Any {
+        return [
+            "category": category,
+            "type": type,
+            "difficulty": difficulty,
+            "question": question,
+            "correct_answer": correct_answer,
+            "incorrect_answers": incorrect_answers
+        ]
+    }
 }

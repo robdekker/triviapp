@@ -22,7 +22,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profilePicture: UIImageView!
         
     // Actions
-    
     @IBAction func signOutButtonTapped(_ sender: Any) {
         do {
             if FBSDKAccessToken.current() != nil {
@@ -46,15 +45,14 @@ class ProfileViewController: UIViewController {
     // Properties
     var user: User!
     var currentUserRef = Database.database().reference()
+    var player: Player!
 
     // Constants
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         updateUI()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,36 +61,50 @@ class ProfileViewController: UIViewController {
     }
     
     func updateUI() {
-        let userID = Auth.auth().currentUser?.uid
+        if player != nil {
+            self.navigationItem.rightBarButtonItem = nil
 
-        self.currentUserRef.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user info
-            let value = snapshot.value as? NSDictionary
-            let username = value?["username"] as? String ?? "Unknown user"
-            let level = value?["level"] as? Int ?? 0
-            let dailyPoints = value?["daily_points"] as? Int ?? 0
-            let weeklyPoints = value?["weekly_points"] as? Int ?? 0
-            let timesWon = value?["times_won"] as? Int ?? 0
-            let url = URL(string: "\(value?["image"] ?? "default_profile")")
-            
-            // Set labels retrieved from Firebase
-            self.usernameLabel.text = username
+            self.usernameLabel.text = player.username
             self.usernameLabel.adjustsFontSizeToFitWidth = true
-            self.levelLabel.text = "Level: \(level)"
-            self.dailyPointsLabel.text = "\(dailyPoints)"
-            self.weeklyPointsLabel.text = "\(weeklyPoints)"
-            self.timesWonLabel.text = "\(timesWon)"
+            self.levelLabel.text = "Level: \(player.level)"
+            self.dailyPointsLabel.text = "\(player.dailyPoints)"
+            self.weeklyPointsLabel.text = "\(player.weeklyPoints)"
+            self.timesWonLabel.text = "\(player.timesWon)"
+            //profilePicture = ""
             
-            // Use KingFisher to download and cache the image
-            self.profilePicture.kf.setImage(with: url)
-            self.profilePicture.layer.borderWidth = 1
-            self.profilePicture.layer.masksToBounds = false
-            self.profilePicture.layer.borderColor = UIColor.black.cgColor
-            self.profilePicture.layer.cornerRadius = self.profilePicture.frame.height/2
-            self.profilePicture.clipsToBounds = true
-            
-        }) { (error) in
-            print(error.localizedDescription)
+        } else {
+        
+            let userID = Auth.auth().currentUser?.uid
+
+            self.currentUserRef.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user info
+                let value = snapshot.value as? NSDictionary
+                let username = value?["username"] as? String ?? "Unknown user"
+                let level = value?["level"] as? Int ?? 0
+                let dailyPoints = value?["daily_points"] as? Int ?? 0
+                let weeklyPoints = value?["weekly_points"] as? Int ?? 0
+                let timesWon = value?["times_won"] as? Int ?? 0
+                let url = URL(string: "\(value?["image"] ?? "default_profile")")
+                
+                // Set labels retrieved from Firebase
+                self.usernameLabel.text = username
+                self.usernameLabel.adjustsFontSizeToFitWidth = true
+                self.levelLabel.text = "Level: \(level)"
+                self.dailyPointsLabel.text = "\(dailyPoints)"
+                self.weeklyPointsLabel.text = "\(weeklyPoints)"
+                self.timesWonLabel.text = "\(timesWon)"
+                
+                // Use KingFisher to download and cache the image
+                self.profilePicture.kf.setImage(with: url)
+                self.profilePicture.layer.borderWidth = 1
+                self.profilePicture.layer.masksToBounds = false
+                self.profilePicture.layer.borderColor = UIColor.black.cgColor
+                self.profilePicture.layer.cornerRadius = self.profilePicture.frame.height/2
+                self.profilePicture.clipsToBounds = true
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
         }
     }
 

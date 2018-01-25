@@ -16,13 +16,13 @@ class ScoreViewController: UIViewController {
     // Actions
     @IBAction func backToHomeButtonTapped(_ sender: Any) {
         
+        //navigationController?.popToRootViewController(animated: true)
         performSegue(withIdentifier: "unwindToHome", sender: self)
 
     }
     
     // Properties
     var points = Int()
-    var user: User!
     
     // Constants
     
@@ -37,16 +37,14 @@ class ScoreViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "unwindToHome" {
+            let loginViewController = segue.destination as! LoginViewController
+            loginViewController.previousViewController = "ScoreViewController"
+        }
     }
-    */
 
 }

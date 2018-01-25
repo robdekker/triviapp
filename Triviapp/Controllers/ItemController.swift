@@ -73,7 +73,10 @@ extension String {
             "&ocirc;"   : "ô",
             "&oacute;"  : "ó",
             "&ouml;"    : "ö",
-            "&Uuml;"    : "Ü"
+            "&Uuml;"    : "Ü",
+            "&ldquo;"   : "\"",
+            "&hellip;"  : "...",
+            "&rdquo;"   : "\""
             ]
         
         for (name,value) in entities {

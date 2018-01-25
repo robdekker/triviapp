@@ -17,22 +17,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if previousViewController == "ScoreViewController" {
+            print("The previous view controller is indeed scoreviewcontroller!")
+            self.performSegue(withIdentifier: "loginToHome", sender: nil)
+        
+        } else {
+        
+            Auth.auth().addStateDidChangeListener() { auth, user in
+                if user != nil {
+                    print("User id:", user!.uid)
+                    self.performSegue(withIdentifier: "loginToHome", sender: nil)
+                } else {
+                    print("No user detected")
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         emailTextField.setLeftPaddingPoints(30)
         emailTextField.delegate = self
         passwordTextField.setLeftPaddingPoints(30)
         passwordTextField.delegate = self
+        
         usersRef = Database.database().reference(withPath: "users")
         
-        Auth.auth().addStateDidChangeListener() { auth, user in
-            if user != nil {
-                print("User id:", user!.uid)
-                self.performSegue(withIdentifier: "loginToHome", sender: nil)
-            } else {
-                print("No user detected")
-            }
-        }
     }
     
     // Dismiss keyboard when touching outside textfields
@@ -53,7 +66,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Actions
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
-        
+    }
+    
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -187,7 +202,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 "daily_points": 0,
                                 "weekly_points": 0,
                                 "times_won": 0,
-                                "image": "\(imageURL)"
+                                "image": "\(imageURL)",
+                                "lastTimeAnswered": ""
                                 ])
                             }
                         })
@@ -205,6 +221,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // Properties
     var user: User!
     var usersRef: DatabaseReference!
+    var previousViewController: String!
 
     // Constants
     

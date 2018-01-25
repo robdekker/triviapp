@@ -57,15 +57,16 @@
 * Still bug at score to home unwind segue 
 
 # Wednesday 24-01
+* Get current date, so that every new day a player gets new questions, and every player gets the same questions.
+* Provide feedback when question is answered before moving on to the next question
+* Provide feedback when timer ends and then move on to the next question
+
+# Thursday 25-01
 
 
 ## Things I still have to implement in my app:
-* UIImagePicker to change profile picture
-* Save profile picture in Firebase Storage
-* Bug fix: ScoreView to HomeView unwind segue
-* Actually do something when timer ends
-* Provide feedback when question is answered (or not answered)
-* Save fetched questions in database, so that every user gets the same questions
-* Get local time to reset daily points every day
-* Complete list of decode entities
+* UIImagePicker to change profile picture and save it in Firebase Storage
+* Bug: ScoreViewController to HomeViewController unwind segue
+* Bug: fetched questions of type “Question” can not be pushed to Firebase, only supports types NSNumber, NSString, NSDictionary, and NSArray.
+* Bug: Facebook user log out second time does not work (segue is not performed)
 

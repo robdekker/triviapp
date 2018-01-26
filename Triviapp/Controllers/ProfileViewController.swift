@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController {
     
     // Properties
     var user: User!
-    var currentUserRef = Database.database().reference()
+    var usersRef = Database.database().reference()
     var player: Player!
 
     // Constants
@@ -76,7 +76,7 @@ class ProfileViewController: UIViewController {
         
             let userID = Auth.auth().currentUser?.uid
 
-            self.currentUserRef.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            self.usersRef.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user info
                 let value = snapshot.value as? NSDictionary
                 let username = value?["username"] as? String ?? "Unknown user"

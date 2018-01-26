@@ -29,6 +29,7 @@ class ItemController {
                         let correctAnswer = question["correct_answer"] as? String,
                         let incorrectAnswers = question["incorrect_answers"] as? [String] {
                         
+                        // Decode the questions and their corresponding answers
                         let theQuestionDecoded = theQuestion.htmlDecoded()
                         let correctAnswerDecoded = correctAnswer.htmlDecoded()
                         var incorrectAnswersDecoded = [String]()
@@ -38,9 +39,9 @@ class ItemController {
                         }
                         
                         questions.append(Question(category: category, type: type, difficulty: difficulty, question: theQuestionDecoded, correct_answer: correctAnswerDecoded, incorrect_answers: incorrectAnswersDecoded))
-                        completion(questions)
                     }
                 }
+                completion(questions)
             } else {
                 completion(nil)
             }

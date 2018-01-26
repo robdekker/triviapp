@@ -98,7 +98,7 @@ class QuestionViewController: UIViewController {
         seconds = 20
         self.navigationItem.title = "\(questionsDict[currentQuestion].category)"
         questionLabel.text = "\(questionsDict[currentQuestion].question)"
-        correctAnswerLabel.text = "\(questionsDict[currentQuestion].correct_answer)!"
+        correctAnswerLabel.text = "\(questionsDict[currentQuestion].correct_answer)"
         timerLabel.text = "\(seconds)"
         rightAnswerPlacement = Int(arc4random_uniform(UInt32(3)))+1
         showFeedback(boolean: false)
@@ -136,6 +136,7 @@ class QuestionViewController: UIViewController {
             timer.invalidate()
             print("Time is up!")
             wrongOrRightLabel.text = "Time is up!\nThe correct answer was:"
+            wrongOrRightLabel.textColor = .black
             showFeedback(boolean: true)
 
         } else {

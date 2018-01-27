@@ -323,9 +323,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpA-vG-GwG">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpA-vG-GwG">
                                 <rect key="frame" x="80" y="404" width="160" height="45"/>
-                                <color key="backgroundColor" red="0.95106273889541626" green="0.41286146640777588" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="vqp-JX-qAq"/>
                                 </constraints>
@@ -572,6 +572,7 @@
                                 <state key="normal" title="Go back to home"/>
                                 <connections>
                                     <action selector="backToHomeButtonTapped:" destination="dZJ-aM-b0N" eventType="touchUpInside" id="xND-DS-TOR"/>
+                                    <segue destination="Zxu-w6-mjR" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeWithSegue:" id="h1s-iB-hEC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -588,7 +589,6 @@
                     </view>
                     <connections>
                         <outlet property="scoreLabel" destination="VCp-Mn-Zjn" id="Sls-2e-LIg"/>
-                        <segue destination="Zxu-w6-mjR" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeWithSegue:" id="1uE-4s-wMa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxd-X2-Gaa" userLabel="First Responder" sceneMemberID="firstResponder"/>

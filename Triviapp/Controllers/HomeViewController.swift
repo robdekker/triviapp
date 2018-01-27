@@ -25,8 +25,12 @@ class HomeViewController: UIViewController {
     // Properties
     var user: User!
     var currentUserRef = Database.database().reference().child("users")
-    var questionsRef = Database.database().reference().child("questions")
+    var dateRef = Database.database().reference().child("questions")
+    var questionsRef = Database.database().reference().child("questions").child("questions")
     var questions = [Question]()
+    var date = String()
+    var currentDate = String()
+    var currentWeekday = Int()
     var newQuestions = [String: Any]()
     var lastTimeAnswered = String()
     
@@ -42,6 +46,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        currentUserRef.keepSynced(true)
         self.currentUserRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user info
             let value = snapshot.value as? NSDictionary
@@ -55,42 +60,44 @@ class HomeViewController: UIViewController {
             self.levelLabel.text = "Level: \(level)"
         })
         
-        loadQuestions()
+        loadFirebaseData()
     }
     
     func updateUI(with questions: [Question]) {
         DispatchQueue.main.async {
             self.questions = questions
             self.questionsToPlayLabel.text = "You have \(questions.count) questions waiting for you today!"
+            self.startQuizButton.backgroundColor = UIColor(red: 243/255.0, green:105/255.0, blue: 0/255.0, alpha: 1.0)
+            self.startQuizButton.isEnabled = true
         }
     }
     
-    func loadQuestions() {
+    func loadFirebaseData() {
         self.questionsRef.observe(.value, with: { snapshot in
+            if snapshot.exists() {
+                for item in snapshot.children {
+                    let question = Question(snapshot: item as! DataSnapshot)
+                    self.questions.append(question)
+                }
+            } else {
+                print("Snapshot does not exist")
+            }
+        })
+        
+        self.dateRef.observe(.value, with: { snapshot in
+                
             let value = snapshot.value as? NSDictionary
-//            let questionsDict = value?["questions"] as? [[String: Any]]
-//            for question in questionsDict {
-//                if let category = question["category"] as? String,
-//                    let type = question["type"] as? String,
-//                    let difficulty = question["difficulty"] as? String,
-//                    let theQuestion = question["question"] as? String,
-//                    let correctAnswer = question["correct_answer"] as? String,
-//                    let incorrectAnswers = question["incorrect_answers"] as? [String] {
-//                    self.questions.append(Question(category: category, type: type, difficulty: difficulty, question: theQuestion, correct_answer: correctAnswer, incorrect_answers: incorrectAnswers))
-//                }
-//            }
-            let date = value?["date"] as! String
-            let currentDate = String(describing: HomeViewController.dateFormatter.string(from: Date()))
-            let currentWeekday = Calendar.current.component(.weekday, from: Date())
+            self.date = value?["date"] as! String
+            self.currentDate = String(describing: HomeViewController.dateFormatter.string(from: Date()))
+            self.currentWeekday = Calendar.current.component(.weekday, from: Date())
 
-            self.fetchOrLoadQuestions(questions: self.questions, date: date, currentDate: currentDate, currentWeekday: currentWeekday)
+            self.fetchOrLoadQuestions(questions: self.questions, date: self.date, currentDate: self.currentDate, currentWeekday: self.currentWeekday)
             
         })
     }
     
     func fetchOrLoadQuestions(questions: [Question], date: String, currentDate: String, currentWeekday: Int) {
         // There are questions in Firebase
-        // if questions?.count == 10 {
         if questions.count == 10 {
             print("There are questions in Firebase")
             // If current week day is monday
@@ -111,17 +118,7 @@ class HomeViewController: UIViewController {
                 })
     
                 // Get new data from API
-                ItemController.shared.fetchQuestions { (questions) in
-                    if let questions = questions {
-                        //let questionsFirebase = questions.toAnyObject()
-                        self.questionsRef.setValue([
-                            //"questions": 10,
-                            "date": currentDate,
-                            "weekday": 0
-                        ])
-                        self.updateUI(with: questions)
-                    }
-                }
+                fetchQuestions()
             // If current week day is any other day than monday
             } else {
                 // Date when questions where fetched is today
@@ -130,9 +127,9 @@ class HomeViewController: UIViewController {
                     if self.lastTimeAnswered.isEqual(currentDate) != true {
                         print("Questions for today are in Firebase but not answered.")
                         print("Let's get the questions from Firebase!")
+                        // Get questions from firebase here
                         self.updateUI(with: questions)
-                        self.questionsToPlayLabel.text = "You have \(questions.count) questions left to play!"
-                        // When you already have answered the questions for today
+                    // When you already have answered the questions for today
                     } else {
                         print("Questions for today are in Firebase and already answered.")
                         self.questionsToPlayLabel.text = "NO questions to play."
@@ -143,51 +140,35 @@ class HomeViewController: UIViewController {
                 } else {
                     print("Questions not yet fetched by a player, get these from the API!")
                     // Get new data from API
-                    ItemController.shared.fetchQuestions { (questions) in
-                        if let questions = questions {
-                            self.questions = questions
-                            self.updateUI(with: questions)
-                        }
-                    
-                        var count = 1
-                        var newQuestions = [String: Any]()
-                        for question in self.questions {
-                            newQuestions["Question \(count)"] = question.toAnyObject()
-                            count += 1
-                        }
-                        print("newQuestions:", newQuestions)
-                    }
-                    
-                    self.questionsRef.setValue([
-                        "questions": newQuestions,
-                        "date": currentDate,
-                        "weekday": currentWeekday
-                        ])
-                    }
+                    fetchQuestions()
                 }
+            }
             
         // No questions in Firebase (only first time)
         } else {
             print("No questions fetched for today! Let's fetch questions now!")
             // Get data from API
-            ItemController.shared.fetchQuestions { (questions) in
-                if let questions = questions {
-                    self.questions = questions
-                    self.updateUI(with: questions)
-                }
-                
-                var count = 1
-                for question in self.questions {
-                    self.newQuestions["Question \(count)"] = question.toAnyObject()
-                    count += 1
-                }
-            
-                self.questionsRef.setValue([
-                    "questions": self.newQuestions,
-                    "date": currentDate,
-                    "weekday": currentWeekday
-                ])
+            fetchQuestions()
+        }
+    }
+    
+    func fetchQuestions() {
+        ItemController.shared.fetchQuestions { (questions) in
+            if let questions = questions {
+                self.questions = questions
+                self.updateUI(with: questions)
             }
+            var count = 1
+            for question in self.questions {
+                self.newQuestions["Question \(count)"] = question.toAnyObject()
+                count += 1
+            }
+            
+            self.dateRef.updateChildValues([
+                "questions": self.newQuestions,
+                "date": self.currentDate,
+                "weekday": self.currentWeekday
+                ])
         }
     }
     

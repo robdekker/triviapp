@@ -25,8 +25,9 @@ class QuestionViewController: UIViewController {
         
         if sender.tag == rightAnswerPlacement {
             print("Right!")
+            self.view.backgroundColor = .green
+            self.view.viewWithTag(5)?.backgroundColor = .green
             wrongOrRightLabel.text = "You are right!\nThe correct answer was:"
-            wrongOrRightLabel.textColor = .green
             points += 1
             
             self.usersRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -44,8 +45,9 @@ class QuestionViewController: UIViewController {
 
         } else {
             print("WRONG!")
+            self.view.backgroundColor = .red
+            self.view.viewWithTag(5)?.backgroundColor = .red
             wrongOrRightLabel.text = "You are WRONG!\nThe correct answer was:"
-            wrongOrRightLabel.textColor = .red
         }
         
         timer.invalidate()
@@ -56,12 +58,6 @@ class QuestionViewController: UIViewController {
         if currentQuestion != questionsDict.count {
             newQuestion()
         } else {
-            let currentDate = Date()
-            lastTimeAnswered = HomeViewController.dateFormatter.string(from: currentDate)
-            
-            self.usersRef.child(userID!).updateChildValues([
-                "lastTimeAnswered": lastTimeAnswered
-                ])
             performSegue(withIdentifier: "showScore", sender: self)
         }
     }
@@ -97,6 +93,7 @@ class QuestionViewController: UIViewController {
     func newQuestion() {
         seconds = 20
         self.navigationItem.title = "\(questionsDict[currentQuestion].category)"
+        self.view.backgroundColor = .white
         questionLabel.text = "\(questionsDict[currentQuestion].question)"
         correctAnswerLabel.text = "\(questionsDict[currentQuestion].correct_answer)"
         timerLabel.text = "\(seconds)"

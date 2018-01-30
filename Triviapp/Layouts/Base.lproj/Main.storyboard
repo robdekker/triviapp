@@ -13,10 +13,12 @@
     <customFonts key="customFonts">
         <array key="Avenir.ttc">
             <string>Avenir-Book</string>
-            <string>Avenir-Heavy</string>
         </array>
-        <array key="CourierNew.ttf">
-            <string>CourierNewPSMT</string>
+        <array key="HVD_Comic_Serif_Pro.otf">
+            <string>HVDComicSerifPro</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
         </array>
     </customFonts>
     <scenes>
@@ -181,6 +183,7 @@
                         <outlet property="emailTextField" destination="XGk-Ey-BeB" id="X7u-D7-0p1"/>
                         <outlet property="loginButton" destination="o8o-HL-P8E" id="ccl-1d-TS9"/>
                         <outlet property="passwordTextField" destination="oH5-br-Fki" id="csl-AS-TDQ"/>
+                        <outlet property="triviappLabel" destination="WYg-aw-Whl" id="X0s-Sc-lyd"/>
                         <segue destination="5Jp-hh-TAN" kind="show" identifier="loginToHome" id="Rsz-kJ-Rts"/>
                     </connections>
                 </viewController>
@@ -196,74 +199,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y05-Nr-UV7">
+                                <rect key="frame" x="0.0" y="64" width="320" height="233.5"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_profile" translatesAutoresizingMaskIntoConstraints="NO" id="dQg-bZ-5vl">
-                                <rect key="frame" x="97.5" y="80" width="125" height="125"/>
+                                <rect key="frame" x="97.5" y="99" width="125" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="1gO-eK-rTU"/>
                                     <constraint firstAttribute="height" constant="125" id="4xo-YX-iiw"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iP-6K-g1V">
-                                <rect key="frame" x="16" y="215" width="288" height="27.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="16" y="234" width="288" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MhK-El-CxY">
-                                <rect key="frame" x="144.5" y="245" width="31.5" height="16"/>
+                                <rect key="frame" x="144.5" y="256.5" width="31.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="UDN-9Y-G8c">
-                                <rect key="frame" x="10" y="306" width="300" height="47"/>
+                                <rect key="frame" x="10" y="317.5" width="300" height="40"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PTq-Po-YpB">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="47"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRw-OW-pxZ">
-                                                <rect key="frame" x="8.5" y="0.0" width="83.5" height="23.5"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
+                                                <rect key="frame" x="36" y="0.0" width="78.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KH7-bC-18r">
-                                                <rect key="frame" x="45.5" y="23.5" width="9.5" height="23.5"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                <rect key="frame" x="70.5" y="20" width="9.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GOE-bm-FZK">
-                                        <rect key="frame" x="100" y="0.0" width="100" height="47"/>
+                                        <rect key="frame" x="150" y="0.0" width="150" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdy-jJ-TMo">
-                                                <rect key="frame" x="0.5" y="0.0" width="99.5" height="23.5"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
+                                                <rect key="frame" x="28.5" y="0.0" width="93.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpT-vJ-wVV">
-                                                <rect key="frame" x="45.5" y="23.5" width="9.5" height="23.5"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qil-If-16i">
-                                        <rect key="frame" x="200" y="0.0" width="100" height="47"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Times won" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpk-2g-nS4">
-                                                <rect key="frame" x="12.5" y="0.0" width="75" height="23.5"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhW-Bg-Uo1">
-                                                <rect key="frame" x="45.5" y="23.5" width="9.5" height="23.5"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                <rect key="frame" x="70.5" y="20" width="9.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -275,9 +264,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="UDN-9Y-G8c" firstAttribute="centerX" secondItem="vZj-1w-NiS" secondAttribute="centerX" id="2w6-a8-Tfw"/>
+                            <constraint firstItem="UDN-9Y-G8c" firstAttribute="top" secondItem="y05-Nr-UV7" secondAttribute="bottom" constant="20" id="6dO-mj-GMN"/>
+                            <constraint firstItem="y05-Nr-UV7" firstAttribute="trailing" secondItem="dOr-kd-5N5" secondAttribute="trailing" id="9NP-Ok-GGj"/>
                             <constraint firstItem="MhK-El-CxY" firstAttribute="centerX" secondItem="vZj-1w-NiS" secondAttribute="centerX" id="Ayr-7m-obu"/>
                             <constraint firstItem="dOr-kd-5N5" firstAttribute="trailing" secondItem="UDN-9Y-G8c" secondAttribute="trailing" constant="10" id="Cfv-el-Zdg"/>
-                            <constraint firstItem="dQg-bZ-5vl" firstAttribute="top" secondItem="dOr-kd-5N5" secondAttribute="top" constant="16" id="Oq2-pf-KVJ"/>
+                            <constraint firstItem="y05-Nr-UV7" firstAttribute="leading" secondItem="dOr-kd-5N5" secondAttribute="leading" id="HSN-9a-7Ct"/>
+                            <constraint firstItem="y05-Nr-UV7" firstAttribute="top" secondItem="dOr-kd-5N5" secondAttribute="top" id="JjK-Sx-OFk"/>
+                            <constraint firstItem="dQg-bZ-5vl" firstAttribute="top" secondItem="dOr-kd-5N5" secondAttribute="top" constant="35" id="Oq2-pf-KVJ"/>
                             <constraint firstItem="0iP-6K-g1V" firstAttribute="leading" secondItem="dOr-kd-5N5" secondAttribute="leading" constant="16" id="SsQ-aC-Dyt"/>
                             <constraint firstItem="UDN-9Y-G8c" firstAttribute="top" secondItem="MhK-El-CxY" secondAttribute="bottom" constant="45" id="UyK-V8-QnE"/>
                             <constraint firstItem="dOr-kd-5N5" firstAttribute="trailing" secondItem="0iP-6K-g1V" secondAttribute="trailing" constant="16" id="emU-1T-hXJ"/>
@@ -301,10 +294,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundProfileImage" destination="y05-Nr-UV7" id="ecT-dn-nqZ"/>
                         <outlet property="dailyPointsLabel" destination="KH7-bC-18r" id="Y0L-58-cbj"/>
                         <outlet property="levelLabel" destination="MhK-El-CxY" id="5vZ-22-AVd"/>
-                        <outlet property="profilePicture" destination="dQg-bZ-5vl" id="8Xl-Xa-ecP"/>
-                        <outlet property="timesWonLabel" destination="fhW-Bg-Uo1" id="hSm-Zi-0qL"/>
+                        <outlet property="profileImage" destination="dQg-bZ-5vl" id="9MA-s8-vPg"/>
                         <outlet property="usernameLabel" destination="0iP-6K-g1V" id="lHg-TV-ovi"/>
                         <outlet property="weeklyPointsLabel" destination="IpT-vJ-wVV" id="JI7-hL-Kli"/>
                         <segue destination="t4c-qi-5lw" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="pEa-9L-qC3"/>
@@ -313,7 +306,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kDI-W9-7VY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="t4c-qi-5lw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3098" y="994"/>
+            <point key="canvasLocation" x="3097.5" y="992.95774647887322"/>
         </scene>
         <!--Welcome to Triviapp!-->
         <scene sceneID="d8u-Di-ZT6">
@@ -329,6 +322,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="vqp-JX-qAq"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                 <state key="normal" title="Start quiz">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -337,17 +331,17 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="A2m-UV-0eP">
-                                <rect key="frame" x="16" y="72" width="288" height="12"/>
+                                <rect key="frame" x="16" y="72" width="288" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKm-fa-HzZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="144" height="12"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="144" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sT7-Pm-1EJ">
-                                        <rect key="frame" x="144" y="0.0" width="144" height="12"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <rect key="frame" x="144" y="0.0" width="144" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -361,7 +355,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="4cn-JG-HFT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -464,7 +458,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d63-jm-1Kj">
                                         <rect key="frame" x="290" y="40" width="21.5" height="19.5"/>
-                                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -482,7 +476,8 @@
                                 <rect key="frame" x="0.0" y="318" width="320" height="250"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXT-ct-QaS">
-                                        <rect key="frame" x="100" y="136" width="120" height="30"/>
+                                        <rect key="frame" x="90" y="136" width="140" height="33"/>
+                                        <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                         <state key="normal" title="Next question"/>
                                         <connections>
                                             <action selector="nextQuestionButtonTapped:" destination="PrK-vE-VNL" eventType="touchUpInside" id="RHe-dj-bss"/>
@@ -509,7 +504,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="zXT-ct-QaS" firstAttribute="leading" secondItem="HEE-L6-KGq" secondAttribute="leading" constant="100" id="XJm-j9-8J7"/>
+                                    <constraint firstItem="zXT-ct-QaS" firstAttribute="leading" secondItem="HEE-L6-KGq" secondAttribute="leading" constant="90" id="XJm-j9-8J7"/>
                                     <constraint firstAttribute="trailing" secondItem="NSy-tX-NBa" secondAttribute="trailing" id="XvT-ZN-ZWv"/>
                                     <constraint firstItem="NSy-tX-NBa" firstAttribute="leading" secondItem="HEE-L6-KGq" secondAttribute="leading" id="Zc0-gB-XIl"/>
                                     <constraint firstAttribute="height" constant="250" id="bqs-f6-kdP"/>
@@ -518,7 +513,7 @@
                                     <constraint firstItem="caS-B8-NbD" firstAttribute="top" secondItem="HEE-L6-KGq" secondAttribute="top" id="n8U-AY-Db2"/>
                                     <constraint firstAttribute="trailing" secondItem="caS-B8-NbD" secondAttribute="trailing" id="tI5-RX-sPZ"/>
                                     <constraint firstItem="NSy-tX-NBa" firstAttribute="top" secondItem="caS-B8-NbD" secondAttribute="bottom" id="v4V-Aa-bhE"/>
-                                    <constraint firstAttribute="trailing" secondItem="zXT-ct-QaS" secondAttribute="trailing" constant="100" id="ysu-1P-uaf"/>
+                                    <constraint firstAttribute="trailing" secondItem="zXT-ct-QaS" secondAttribute="trailing" constant="90" id="ysu-1P-uaf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -561,28 +556,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCp-Mn-Zjn">
-                                <rect key="frame" x="16" y="274" width="288" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCp-Mn-Zjn">
+                                <rect key="frame" x="16" y="249.5" width="288" height="70"/>
+                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="58"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDq-g2-JmH">
-                                <rect key="frame" x="16" y="335" width="288" height="30"/>
+                                <rect key="frame" x="16" y="359.5" width="288" height="33"/>
+                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                 <state key="normal" title="Go back to home"/>
                                 <connections>
                                     <action selector="backToHomeButtonTapped:" destination="dZJ-aM-b0N" eventType="touchUpInside" id="xND-DS-TOR"/>
                                     <segue destination="Zxu-w6-mjR" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeWithSegue:" id="h1s-iB-hEC"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLT-qa-jsb">
+                                <rect key="frame" x="16" y="134" width="288" height="70"/>
+                                <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="58"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="UDq-g2-JmH" firstAttribute="leading" secondItem="q2U-oA-018" secondAttribute="leading" constant="16" id="7A8-Jk-0dU"/>
                             <constraint firstItem="VCp-Mn-Zjn" firstAttribute="leading" secondItem="q2U-oA-018" secondAttribute="leading" constant="16" id="Ce3-lX-RtS"/>
                             <constraint firstItem="q2U-oA-018" firstAttribute="trailing" secondItem="UDq-g2-JmH" secondAttribute="trailing" constant="16" id="FxN-0g-kcm"/>
+                            <constraint firstItem="q2U-oA-018" firstAttribute="trailing" secondItem="hLT-qa-jsb" secondAttribute="trailing" constant="16" id="IQh-3h-vd9"/>
+                            <constraint firstItem="hLT-qa-jsb" firstAttribute="leading" secondItem="q2U-oA-018" secondAttribute="leading" constant="16" id="NIG-Q1-IbN"/>
                             <constraint firstItem="UDq-g2-JmH" firstAttribute="top" secondItem="VCp-Mn-Zjn" secondAttribute="bottom" constant="40" id="UUA-KG-mi1"/>
                             <constraint firstItem="q2U-oA-018" firstAttribute="trailing" secondItem="VCp-Mn-Zjn" secondAttribute="trailing" constant="16" id="bko-TG-s5Y"/>
+                            <constraint firstItem="hLT-qa-jsb" firstAttribute="top" secondItem="q2U-oA-018" secondAttribute="top" constant="70" id="iJO-3d-eJg"/>
                             <constraint firstItem="VCp-Mn-Zjn" firstAttribute="centerY" secondItem="e9m-7s-v4O" secondAttribute="centerY" id="nTo-Ks-9ow"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q2U-oA-018"/>
@@ -613,29 +618,29 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="II3-0A-JKj">
-                                            <rect key="frame" x="275.5" y="11" width="20.5" height="21"/>
+                                            <rect key="frame" x="277" y="11" width="19" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="gAy-7Z-bK7"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfb-eP-UH0">
-                                            <rect key="frame" x="24" y="11" width="20" height="21"/>
+                                            <rect key="frame" x="24" y="11" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="dah-cJ-6px"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tck-fX-fg8">
-                                            <rect key="frame" x="69" y="11" width="79" height="21"/>
+                                            <rect key="frame" x="69" y="11" width="86" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="185" id="QBm-8i-0bA"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HVDComicSerifPro" family="HVD Comic Serif Pro" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -671,6 +676,7 @@
                                 <segment title="Daily"/>
                                 <segment title="Weekly"/>
                             </segments>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="segmentedControlValueChanged:" destination="Hk9-gm-7op" eventType="valueChanged" id="gO5-kd-9df"/>
                             </connections>
@@ -775,6 +781,6 @@
         <image name="username" width="231" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rki-gV-zAu"/>
+        <segue reference="H2Y-ar-wk5"/>
     </inferredMetricsTieBreakers>
 </document>

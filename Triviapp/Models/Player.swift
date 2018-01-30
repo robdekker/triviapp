@@ -15,14 +15,16 @@ struct Player {
     let dailyPoints: Int
     let weeklyPoints: Int
     let timesWon: Int
+    let imageURL: String
     let ref: DatabaseReference?
     
-    init(username: String, level: Int, dailyPoints: Int, weeklyPoints: Int, timesWon: Int) {
+    init(username: String, level: Int, dailyPoints: Int, weeklyPoints: Int, timesWon: Int, imageURL: String) {
         self.username = username
         self.level = level
         self.dailyPoints = dailyPoints
         self.weeklyPoints = weeklyPoints
         self.timesWon = timesWon
+        self.imageURL = imageURL
         self.ref = nil
     }
 }

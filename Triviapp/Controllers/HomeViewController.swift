@@ -19,12 +19,18 @@ class HomeViewController: UIViewController {
     
     // Actions
     @IBAction func startQuizButtonTapped(_ sender: Any) {
+        let currentDate = Date()
+        lastTimeAnswered = HomeViewController.dateFormatter.string(from: currentDate)
+        
+        self.usersRef.child(userID!).updateChildValues([
+            "lastTimeAnswered": lastTimeAnswered
+            ])
         performSegue(withIdentifier: "startQuiz", sender: self)
     }
     
     // Properties
     var user: User!
-    var currentUserRef = Database.database().reference().child("users")
+    var usersRef = Database.database().reference().child("users")
     var dateRef = Database.database().reference().child("questions")
     var questionsRef = Database.database().reference().child("questions").child("questions")
     var questions = [Question]()
@@ -46,8 +52,16 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        currentUserRef.keepSynced(true)
-        self.currentUserRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+        usersRef.keepSynced(true)
+        //dateRef.keepSynced(true)
+        getUserData()
+        loadFirebaseData()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "HVDComicSerifPro", size: 20)! ]
+    }
+    
+    func getUserData() {
+        self.usersRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user info
             let value = snapshot.value as? NSDictionary
             let username = value?["username"] as? String ?? "Unknown user"
@@ -59,8 +73,6 @@ class HomeViewController: UIViewController {
             self.usernameLabel.adjustsFontSizeToFitWidth = true
             self.levelLabel.text = "Level: \(level)"
         })
-        
-        loadFirebaseData()
     }
     
     func updateUI(with questions: [Question]) {
@@ -105,11 +117,11 @@ class HomeViewController: UIViewController {
                 print("It is monday, so a new week begins: new game, new chances")
                 print("Let's reset all daily and weekly points of all players!")
                 // Reset daily and weekly points of all players to 0
-                self.currentUserRef.observe(.value, with: { snapshot in
+                self.usersRef.observe(.value, with: { snapshot in
                     let usersDict = snapshot.value as? [String : AnyObject] ?? [:]
     
                     for user in usersDict {
-                        self.currentUserRef.child(user.key).updateChildValues([
+                        self.usersRef.child(user.key).updateChildValues([
                             "daily_points": 0,
                             "weekly_points": 0,
                         ])
@@ -141,6 +153,18 @@ class HomeViewController: UIViewController {
                     print("Questions not yet fetched by a player, get these from the API!")
                     // Get new data from API
                     fetchQuestions()
+                    
+                    // Reset daily points of all players
+                    self.usersRef.observe(.value, with: { snapshot in
+                        let usersDict = snapshot.value as? [String : AnyObject] ?? [:]
+                        
+                        for user in usersDict {
+                            self.usersRef.child(user.key).updateChildValues([
+                                "daily_points": 0
+                                ])
+                        }
+                        print("Daily points of all players reset")
+                    })
                 }
             }
             
@@ -194,8 +218,6 @@ class HomeViewController: UIViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "startQuiz" {
             let questionViewController = segue.destination as! QuestionViewController
             questionViewController.questionsDict = questions

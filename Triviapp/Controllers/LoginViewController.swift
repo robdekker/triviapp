@@ -13,6 +13,7 @@ import FBSDKLoginKit
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Outlets
+    @IBOutlet weak var triviappLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: FBSDKLoginButton!
@@ -21,7 +22,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if previousViewController == "ScoreViewController" {
             print("The previous view controller is indeed scoreviewcontroller!")
-            self.performSegue(withIdentifier: "loginToHome", sender: nil)
+            performSegue(withIdentifier: "loginToHome", sender: nil)
         
         } else {
         
@@ -39,18 +40,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.setLeftPaddingPoints(30)
-        emailTextField.delegate = self
-        passwordTextField.setLeftPaddingPoints(30)
-        passwordTextField.delegate = self
+        updateUI()
         
         usersRef = Database.database().reference(withPath: "users")
-        
+
     }
     
     // Dismiss keyboard when touching outside textfields
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    func updateUI() {
+        emailTextField.setLeftPaddingPoints(30)
+        emailTextField.delegate = self
+        passwordTextField.setLeftPaddingPoints(30)
+        passwordTextField.delegate = self
+        
+        self.triviappLabel.font = UIFont(name: "HVDComicSerifPro", size: 32)
+
     }
     
     // Navigate to next textfield when touching return key and
@@ -94,8 +102,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let usernameField = alert.textFields![0]
             let emailField = alert.textFields![1]
             let passwordField = alert.textFields![2]
-
-            if !self.isValidEmail(email: emailField.text!) {
+            
+            if usernameField.text!.count < 3 || usernameField.text!.count > 12 {
+                let alert = UIAlertController(title: "Please give a valid username",
+                                              message: "Your username has to be between 3-12 characters",
+                                              preferredStyle: .alert)
+                let tryAgain = UIAlertAction(title: "Try again", style: .cancel)
+                alert.addAction(tryAgain)
+                self.present(alert, animated: true, completion: nil)
+                
+            } else if !self.isValidEmail(email: emailField.text!) {
                 let alert = UIAlertController(title: "Please give a valid email",
                                               message: "Like: this@example.com",
                                               preferredStyle: .alert)
@@ -124,7 +140,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 "daily_points": 0,
                                 "weekly_points": 0,
                                 "times_won": 0,
-                                "image": "default_profile"
+                                "imageURL": "default_profile",
+                                "lastTimeAnswered": ""
                                 ])
                         }
                         
@@ -202,7 +219,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 "daily_points": 0,
                                 "weekly_points": 0,
                                 "times_won": 0,
-                                "image": "\(imageURL)",
+                                "imageURL": "\(imageURL)",
                                 "lastTimeAnswered": ""
                                 ])
                             }
@@ -229,17 +246,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // Check if email is valid, used example from stackoverflow
     func isValidEmail(email:String) -> Bool {

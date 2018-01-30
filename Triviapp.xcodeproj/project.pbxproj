@@ -29,6 +29,7 @@
 		A4C06A5620076D5A002018D7 /* TriviappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C06A5520076D5A002018D7 /* TriviappTests.swift */; };
 		A4C06A6620076FD7002018D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C06A6520076FD6002018D7 /* LoginViewController.swift */; };
 		A4C9598B2013B748001DFF6B /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9598A2013B748001DFF6B /* LeaderboardTableViewCell.swift */; };
+		A4E12589201D543800078DA0 /* HVD_Comic_Serif_Pro.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4E12588201D543700078DA0 /* HVD_Comic_Serif_Pro.otf */; };
 		E17B47135EE6928BB369DB64 /* Pods_Triviapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8308EC4F33DFDF76CF3F497B /* Pods_Triviapp.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		A4C06A5720076D5A002018D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4C06A6520076FD6002018D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A4C9598A2013B748001DFF6B /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
+		A4E12588201D543700078DA0 /* HVD_Comic_Serif_Pro.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HVD_Comic_Serif_Pro.otf; sourceTree = "<group>"; };
 		AFC809D87563CF45EDA7F11F /* Pods-Triviapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Triviapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Triviapp/Pods-Triviapp.debug.xcconfig"; sourceTree = "<group>"; };
 		CF87ECB5544D84A5A4E72C55 /* Pods-TriviappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TriviappTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TriviappTests/Pods-TriviappTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +155,7 @@
 				A4C06A6320076E65002018D7 /* Other */,
 				A4C06A6420076E6C002018D7 /* Supporting Files */,
 				A4C06A4720076D59002018D7 /* Assets.xcassets */,
+				A4E1258A201D548C00078DA0 /* Resources */,
 				A4C06A4420076D59002018D7 /* Triviapp.xcdatamodeld */,
 			);
 			path = Triviapp;
@@ -216,6 +219,14 @@
 				A415C2FB20080AA1007B2127 /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4E1258A201D548C00078DA0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A4E12588201D543700078DA0 /* HVD_Comic_Serif_Pro.otf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A415C2FC20080AA1007B2127 /* GoogleService-Info.plist in Resources */,
+				A4E12589201D543800078DA0 /* HVD_Comic_Serif_Pro.otf in Resources */,
 				A4C06A4B20076D59002018D7 /* LaunchScreen.storyboard in Resources */,
 				A4C06A4820076D59002018D7 /* Assets.xcassets in Resources */,
 				A4C06A4320076D59002018D7 /* Main.storyboard in Resources */,

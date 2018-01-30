@@ -30,12 +30,7 @@ class ScoreViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationItem.hidesBackButton = true
-        scoreLabel.text = "Score: \(points)"
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        scoreLabel.text = "\(points)"
     }
 
     // MARK: - Navigation

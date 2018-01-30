@@ -31,32 +31,17 @@ class LeaderboardTableViewController: UITableViewController {
         super.viewDidLoad()
         
         usersRef.keepSynced(true)
-        usersRef.queryOrdered(byChild: "weekly_points").queryLimited(toLast: 10).observe(.value, with: { snapshot in
-            var newWeeklyPlayers: [Player] = []
-            
-            let playerDict = snapshot.value as? [String : AnyObject] ?? [:]
-            for player in playerDict {
-                let attributes = player.value
-                let username = attributes["username"]
-                let level = attributes["level"]
-                let dailyPoints = attributes["daily_points"]
-                let weeklyPoints = attributes["weekly_points"]
-                let timesWon = attributes["times_won"]
-                
-                let playerItem = Player(username: username as! String,
-                                        level: level as! Int,
-                                        dailyPoints: dailyPoints as! Int,
-                                        weeklyPoints: weeklyPoints as! Int,
-                                        timesWon: timesWon as! Int)
-                
-                newWeeklyPlayers.append(playerItem)
-                
-                self.weeklyTopPlayers = newWeeklyPlayers
-                self.weeklyTopPlayers.sort(by: {$0.weeklyPoints > $1.weeklyPoints})
-                self.tableView.reloadData()
-            }
-        })
-        
+        getDailyTopPlayers()
+        getWeeklyTopPlayers()
+        self.tableView.rowHeight = 44;
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func getDailyTopPlayers() {
         usersRef.queryOrdered(byChild: "daily_points").queryLimited(toLast: 10).observe(.value, with: { snapshot in
             var newDailyPlayers: [Player] = []
             
@@ -68,27 +53,52 @@ class LeaderboardTableViewController: UITableViewController {
                 let dailyPoints = attributes["daily_points"]
                 let weeklyPoints = attributes["weekly_points"]
                 let timesWon = attributes["times_won"]
+                let imageURL = attributes["imageURL"]
                 
                 let playerItem = Player(username: username as! String,
                                         level: level as! Int,
                                         dailyPoints: dailyPoints as! Int,
                                         weeklyPoints: weeklyPoints as! Int,
-                                        timesWon: timesWon as! Int)
+                                        timesWon: timesWon as! Int,
+                                        imageURL: imageURL as! String)
                 
                 newDailyPlayers.append(playerItem)
-    
+                
                 self.dailyTopPlayers = newDailyPlayers
                 self.dailyTopPlayers.sort(by: {$0.dailyPoints > $1.dailyPoints})
                 self.tableView.reloadData()
             }
         })
-        
-        self.tableView.rowHeight = 44;
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func getWeeklyTopPlayers() {
+        usersRef.queryOrdered(byChild: "weekly_points").queryLimited(toLast: 10).observe(.value, with: { snapshot in
+            var newWeeklyPlayers: [Player] = []
+            
+            let playerDict = snapshot.value as? [String : AnyObject] ?? [:]
+            for player in playerDict {
+                let attributes = player.value
+                let username = attributes["username"]
+                let level = attributes["level"]
+                let dailyPoints = attributes["daily_points"]
+                let weeklyPoints = attributes["weekly_points"]
+                let timesWon = attributes["times_won"]
+                let imageURL = attributes["imageURL"]
+                
+                let playerItem = Player(username: username as! String,
+                                        level: level as! Int,
+                                        dailyPoints: dailyPoints as! Int,
+                                        weeklyPoints: weeklyPoints as! Int,
+                                        timesWon: timesWon as! Int,
+                                        imageURL: imageURL as! String)
+                
+                newWeeklyPlayers.append(playerItem)
+                
+                self.weeklyTopPlayers = newWeeklyPlayers
+                self.weeklyTopPlayers.sort(by: {$0.weeklyPoints > $1.weeklyPoints})
+                self.tableView.reloadData()
+            }
+        })
     }
 
     // MARK: - Table view data source

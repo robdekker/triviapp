@@ -18,9 +18,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var dailyPointsLabel: UILabel!
     @IBOutlet weak var weeklyPointsLabel: UILabel!
-    @IBOutlet weak var timesWonLabel: UILabel!
-    @IBOutlet weak var profilePicture: UIImageView!
-        
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var backgroundProfileImage: UIImageView!
+    
     // Actions
     @IBAction func signOutButtonTapped(_ sender: Any) {
         do {
@@ -54,26 +54,25 @@ class ProfileViewController: UIViewController {
 
         updateUI()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func updateUI() {
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "HVDComicSerifPro", size: 20)! ]
+        // It is another user than the current user
         if player != nil {
             self.navigationItem.rightBarButtonItem = nil
 
             self.usernameLabel.text = player.username
             self.usernameLabel.adjustsFontSizeToFitWidth = true
+            self.usernameLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+            self.usernameLabel.textColor = .black
             self.levelLabel.text = "Level: \(player.level)"
+            self.levelLabel.textColor = .black
             self.dailyPointsLabel.text = "\(player.dailyPoints)"
             self.weeklyPointsLabel.text = "\(player.weeklyPoints)"
-            self.timesWonLabel.text = "\(player.timesWon)"
-            //profilePicture = ""
-            
-        } else {
         
+        // Update labels to info of current user
+        } else {
+
             let userID = Auth.auth().currentUser?.uid
 
             self.usersRef.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -83,39 +82,35 @@ class ProfileViewController: UIViewController {
                 let level = value?["level"] as? Int ?? 0
                 let dailyPoints = value?["daily_points"] as? Int ?? 0
                 let weeklyPoints = value?["weekly_points"] as? Int ?? 0
-                let timesWon = value?["times_won"] as? Int ?? 0
-                let url = URL(string: "\(value?["image"] ?? "default_profile")")
+                let url = URL(string: "\(value?["imageURL"] ?? "default_profile")")
                 
                 // Set labels retrieved from Firebase
                 self.usernameLabel.text = username
                 self.usernameLabel.adjustsFontSizeToFitWidth = true
+                self.usernameLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
                 self.levelLabel.text = "Level: \(level)"
                 self.dailyPointsLabel.text = "\(dailyPoints)"
                 self.weeklyPointsLabel.text = "\(weeklyPoints)"
-                self.timesWonLabel.text = "\(timesWon)"
                 
                 // Use KingFisher to download and cache the image
-                self.profilePicture.kf.setImage(with: url)
-                self.profilePicture.layer.borderWidth = 1
-                self.profilePicture.layer.masksToBounds = false
-                self.profilePicture.layer.borderColor = UIColor.black.cgColor
-                self.profilePicture.layer.cornerRadius = self.profilePicture.frame.height/2
-                self.profilePicture.clipsToBounds = true
+                self.backgroundProfileImage.kf.setImage(with: url)
+                self.profileImage.kf.setImage(with: url)
+                self.profileImage.layer.borderWidth = 1
+                self.profileImage.layer.masksToBounds = false
+                self.profileImage.layer.borderColor = UIColor.black.cgColor
+                self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
+                self.profileImage.clipsToBounds = true
+                
+                // Add blur to background profile image
+                let blurEffect = UIBlurEffect(style: .light)
+                let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+                blurredEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                blurredEffectView.frame = self.backgroundProfileImage.bounds
+                self.backgroundProfileImage.addSubview(blurredEffectView)
                 
             }) { (error) in
                 print(error.localizedDescription)
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

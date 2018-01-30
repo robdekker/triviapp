@@ -62,7 +62,15 @@
 * Provide feedback when timer ends and then move on to the next question
 
 # Thursday 25-01
+* Error: A valid provisioning profile for this executable was not found. Uiteindelijk erachter gekomen dat wanneer je QuickTime Player runt, je telefoon een andere tijd aangeeft dan het daadwerkelijk is. Wanneer je de applicatie wilt builden moeten de tijden aan elkaar gelijk zijn, anders krijg je deze error.
+* Bug fixed: fetched questions of type “Question” can not be pushed to Firebase, only supports types NSNumber, NSString, NSDictionary, and NSArray.
+* All players will get the same questions every day: the first player will fetch 10 questions from the API and will push them to the Firebase database. The other players will then load these same questions from Firebase.
 
+# Friday 26-01
+* Presentation of the minimum viable product.
+
+# Monday 29-01 & Tuesday 30-01
+* I've been sick these days.
 
 ## Things I still have to implement in my app:
 * UIImagePicker to change profile picture and save it in Firebase Storage

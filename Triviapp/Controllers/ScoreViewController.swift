@@ -2,6 +2,8 @@
 //  ScoreViewController.swift
 //  Triviapp
 //
+//  ScoreViewController represents the total amount of points the user has gathered with the quiz
+//
 //  Created by Rob Dekker on 18-01-18.
 //  Copyright © 2018 Rob Dekker. All rights reserved.
 //
@@ -15,26 +17,35 @@ class ScoreViewController: UIViewController {
     
     // Actions
     @IBAction func backToHomeButtonTapped(_ sender: Any) {
-        
-        //navigationController?.popToRootViewController(animated: true)
         performSegue(withIdentifier: "unwindToHome", sender: self)
-
     }
     
     // Properties
     var points = Int()
     
-    // Constants
-    
+    // Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationItem.hidesBackButton = true
-        scoreLabel.text = "\(points)"
+        updateUI()
     }
 
-    // MARK: - Navigation
+    func updateUI() {
+        self.navigationItem.hidesBackButton = true
+        self.scoreLabel.text = "\(points)/10"
 
+        var starImage: UIImageView = UIImageView()
+        if self.points > 0 {
+            // Amount of points is equal to amount of stars
+            for tag in 1...self.points {
+                // Usage of a delay for the stars to appear in order to smooth visualisation
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(0.5 * Double(tag))) {
+                    starImage = self.view.viewWithTag(tag) as! UIImageView
+                    starImage.image = UIImage(named: "star_rating")
+                }
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToHome" {
             let loginViewController = segue.destination as! LoginViewController

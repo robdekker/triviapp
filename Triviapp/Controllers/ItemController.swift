@@ -2,6 +2,8 @@
 //  ItemController.swift
 //  Triviapp
 //
+//  ItemController fetches questions from the API and decodes them immediately
+//
 //  Created by Rob Dekker on 15-01-18.
 //  Copyright © 2018 Rob Dekker. All rights reserved.
 //

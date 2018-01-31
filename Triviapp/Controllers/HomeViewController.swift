@@ -2,6 +2,9 @@
 //  HomeViewController.swift
 //  Triviapp
 //
+//  HomeViewController checks various variables in order to determine if the user has still some
+//  questions to play, or if the user needs to fetch questions from the API
+//
 //  Created by Rob Dekker on 12-01-18.
 //  Copyright © 2018 Rob Dekker. All rights reserved.
 //
@@ -16,6 +19,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var questionsToPlayLabel: UILabel!
     @IBOutlet weak var startQuizButton: UIButton!
+    @IBOutlet weak var fingerPointer: UIImageView!
     
     // Actions
     @IBAction func startQuizButtonTapped(_ sender: Any) {
@@ -49,19 +53,19 @@ class HomeViewController: UIViewController {
         return formatter
     }()
     
+    // Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateUI()
         usersRef.keepSynced(true)
-        //dateRef.keepSynced(true)
-        getUserData()
+        dateRef.keepSynced(true)
         loadFirebaseData()
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "HVDComicSerifPro", size: 20)! ]
     }
     
-    func getUserData() {
-        self.usersRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+    func updateUI() {
+        self.navigationController?.navigationBar.titleTextAttributes = [ .font: UIFont(name: "HVDComicSerifPro", size: 20)!, .foregroundColor: UIColor.white ]
+        
+        self.usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
             // Get user info
             let value = snapshot.value as? NSDictionary
             let username = value?["username"] as? String ?? "Unknown user"
@@ -72,6 +76,16 @@ class HomeViewController: UIViewController {
             self.usernameLabel.text = username
             self.usernameLabel.adjustsFontSizeToFitWidth = true
             self.levelLabel.text = "Level: \(level)"
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 2.0, delay: 0.0, options: .repeat, animations: {
+            self.fingerPointer.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }, completion: { _ in
+            UIView.animate(withDuration: 2.0, animations: {
+                self.fingerPointer.transform = CGAffineTransform.identity
+            })
         })
     }
     
@@ -91,20 +105,16 @@ class HomeViewController: UIViewController {
                     let question = Question(snapshot: item as! DataSnapshot)
                     self.questions.append(question)
                 }
-            } else {
-                print("Snapshot does not exist")
             }
         })
         
-        self.dateRef.observe(.value, with: { snapshot in
-                
+        self.dateRef.observeSingleEvent(of: .value, with: { snapshot in
             let value = snapshot.value as? NSDictionary
             self.date = value?["date"] as! String
             self.currentDate = String(describing: HomeViewController.dateFormatter.string(from: Date()))
             self.currentWeekday = Calendar.current.component(.weekday, from: Date())
 
             self.fetchOrLoadQuestions(questions: self.questions, date: self.date, currentDate: self.currentDate, currentWeekday: self.currentWeekday)
-            
         })
     }
     
@@ -114,8 +124,7 @@ class HomeViewController: UIViewController {
             print("There are questions in Firebase")
             // If current week day is monday
             if currentWeekday == 2 {
-                print("It is monday, so a new week begins: new game, new chances")
-                print("Let's reset all daily and weekly points of all players!")
+                print("It is monday, let's reset all daily and weekly points of all players!")
                 // Reset daily and weekly points of all players to 0
                 self.usersRef.observe(.value, with: { snapshot in
                     let usersDict = snapshot.value as? [String : AnyObject] ?? [:]
@@ -138,7 +147,6 @@ class HomeViewController: UIViewController {
                     // When you have not yet answered the questions for today
                     if self.lastTimeAnswered.isEqual(currentDate) != true {
                         print("Questions for today are in Firebase but not answered.")
-                        print("Let's get the questions from Firebase!")
                         // Get questions from firebase here
                         self.updateUI(with: questions)
                     // When you already have answered the questions for today
@@ -147,6 +155,7 @@ class HomeViewController: UIViewController {
                         self.questionsToPlayLabel.text = "NO questions to play."
                         self.startQuizButton.backgroundColor = .darkGray
                         self.startQuizButton.isEnabled = false
+                        self.fingerPointer.isHidden = true
                     }
                 // Date when questions where fetched is not today
                 } else {
@@ -170,7 +179,7 @@ class HomeViewController: UIViewController {
             
         // No questions in Firebase (only first time)
         } else {
-            print("No questions fetched for today! Let's fetch questions now!")
+            print("No questions were fetched ever! Let's fetch questions from the API now!")
             // Get data from API
             fetchQuestions()
         }
@@ -195,27 +204,6 @@ class HomeViewController: UIViewController {
                 ])
         }
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//
-//        UIView.animate(withDuration: 2.0, delay: 0.0, options: .repeat, animations: {
-//            self.startQuizButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-//        },
-//                       completion: { _ in
-//                        UIView.animate(withDuration: 2.0, animations: {
-//                            self.startQuizButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-//                        })
-//        })
-//
-//    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
-    }
-    
-    // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "startQuiz" {

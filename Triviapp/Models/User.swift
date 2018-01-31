@@ -2,6 +2,8 @@
 //  User.swift
 //  Triviapp
 //
+//  User.swift creates a struct that will represent the user
+//
 //  Created by Rob Dekker on 11-01-18.
 //  Copyright © 2018 Rob Dekker. All rights reserved.
 //
@@ -23,5 +25,4 @@ struct User {
         self.uid = uid
         self.email = email
     }
-    
 }

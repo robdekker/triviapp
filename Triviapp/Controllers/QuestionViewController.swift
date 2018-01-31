@@ -2,13 +2,15 @@
 //  QuestionViewController.swift
 //  Triviapp
 //
+//  QuestionViewController presents the questions with their corresponding answers to the user
+//  When the user answers the question, the user will receive feedback
+//
 //  Created by Rob Dekker on 15-01-18.
 //  Copyright © 2018 Rob Dekker. All rights reserved.
 //
 
 import UIKit
 import Firebase
-import QuartzCore
 
 class QuestionViewController: UIViewController {
     
@@ -18,45 +20,51 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var wrongOrRightLabel: UILabel!
     @IBOutlet weak var correctAnswerLabel: UILabel!
+    @IBOutlet weak var nextQuestionButton: UIButton!
+    @IBOutlet weak var checkmarkImage: UIImageView!
     
     // Actions
     @IBAction func answerButtonTapped(_ sender: UIButton) {
         showFeedback(boolean: true)
         
         if sender.tag == rightAnswerPlacement {
-            print("Right!")
-            self.view.backgroundColor = .green
-            self.view.viewWithTag(5)?.backgroundColor = .green
+            checkmarkImage.image = UIImage(named: "green_checkmark")
             wrongOrRightLabel.text = "You are right!\nThe correct answer was:"
             points += 1
             
             self.usersRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user info
+                // Get user info and add 1 points to both daily and weekly score
                 let value = snapshot.value as? NSDictionary
                 let dailyPoints = value?["daily_points"] as? Int ?? 0
                 let weeklyPoints = value?["weekly_points"] as? Int ?? 0
+                let totalPoints = value?["total_points"] as? Int ?? 0
                 
                 self.usersRef.child(self.userID!).updateChildValues([
                     "daily_points": dailyPoints + 1,
-                    "weekly_points": weeklyPoints + 1
-                    ])
-                
+                    "weekly_points": weeklyPoints + 1,
+                    "total_points": totalPoints + 1,
+                    "level": self.updateLevel(points: totalPoints + 1)
+                ])
             })
 
         } else {
-            print("WRONG!")
-            self.view.backgroundColor = .red
-            self.view.viewWithTag(5)?.backgroundColor = .red
+            checkmarkImage.image = UIImage(named: "red_checkmark")
             wrongOrRightLabel.text = "You are WRONG!\nThe correct answer was:"
         }
         
         timer.invalidate()
-        
     }
     
     @IBAction func nextQuestionButtonTapped(_ sender: Any) {
+        // As long as there are questions, show next question
         if currentQuestion != questionsDict.count {
             newQuestion()
+            
+        // If the last questions is shown
+        } else if currentQuestion == questionsDict.count - 1 {
+            self.nextQuestionButton.titleLabel?.text = "Show score"
+            
+        // No questions left
         } else {
             performSegue(withIdentifier: "showScore", sender: self)
         }
@@ -75,21 +83,24 @@ class QuestionViewController: UIViewController {
     let usersRef = Database.database().reference().child("users")
     let userID = Auth.auth().currentUser?.uid
 
+    // Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.hidesBackButton = true
-        self.tabBarController?.tabBar.isHidden = true
+        updateUI()
         showFeedback(boolean: false)
         newQuestion()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func updateLevel(points: Int) -> Int {
+        let level = points / 100
+        return level
     }
     
-    // New question
+    func updateUI() {
+        self.navigationItem.hidesBackButton = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     func newQuestion() {
         seconds = 20
         self.navigationItem.title = "\(questionsDict[currentQuestion].category)"
@@ -102,10 +113,10 @@ class QuestionViewController: UIViewController {
         
         var button: UIButton = UIButton()
         
+        // The variable 'x' will loop through the incorrect answers
         var x = 0
         for tag in 1...4 {
             button = view.viewWithTag(tag) as! UIButton
-            //button.backgroundColor = UIColor(red: 0, green: 122, blue: 255, alpha: 1.0)
             
             if tag == Int(rightAnswerPlacement) {
                 button.setTitle(questionsDict[currentQuestion].correct_answer, for: .normal)
@@ -115,13 +126,12 @@ class QuestionViewController: UIViewController {
             }
             button.titleEdgeInsets = UIEdgeInsetsMake(0,10,0,10)
             button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.backgroundColor = UIColor(red: 66/255.0, green: 134/255.0, blue: 244/255.0, alpha: 1.0)
-
+            button.titleLabel?.textColor = UIColor(red: 243/255.0, green:105/255.0, blue: 0/255.0, alpha: 1.0)
+            button.backgroundColor = UIColor(red: 60/255.0, green: 86/255.0, blue: 156/255.0, alpha: 1.0)
         }
         currentQuestion += 1
         startAnimation()
         runTimer()
-
     }
     
     func runTimer() {
@@ -131,11 +141,9 @@ class QuestionViewController: UIViewController {
     @objc func updateTimer() {
         if seconds < 1 {
             timer.invalidate()
-            print("Time is up!")
+            checkmarkImage.image = UIImage(named: "red_checkmark")
             wrongOrRightLabel.text = "Time is up!\nThe correct answer was:"
-            wrongOrRightLabel.textColor = .black
             showFeedback(boolean: true)
-
         } else {
             seconds -= 1
             timerLabel.text = "\(seconds)"
@@ -154,15 +162,13 @@ class QuestionViewController: UIViewController {
     func startAnimation() {
         let timelineFrame = CGRect(x: 0, y: 0, width: 320, height: 25)
         let timeline = UIView(frame: timelineFrame)
-        timeline.backgroundColor = .black
+        timeline.backgroundColor = UIColor(red: 243/255.0, green:105/255.0, blue: 0/255.0, alpha: 1.0)
         timelineView.addSubview(timeline)
         
         UIView.animate(withDuration: 20.0, delay: 0.0, options: .curveLinear, animations: {
             timeline.frame = CGRect(x: 0, y: 0, width: 0, height: 25)
         }, completion: nil)
     }
-
-    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showScore" {
@@ -170,5 +176,4 @@ class QuestionViewController: UIViewController {
             scoreViewController.points = points
         }
     }
-
 }

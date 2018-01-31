@@ -2,6 +2,8 @@
 //  Question.swift
 //  Triviapp
 //
+//  Question.swift is a struct that represents the type of a question
+//
 //  Created by Rob Dekker on 15-01-18.
 //  Copyright © 2018 Rob Dekker. All rights reserved.
 //
@@ -10,7 +12,6 @@ import Foundation
 import Firebase
 
 struct Question {
-    //let response_code: Int
     let key: String
     let category: String
     let type: String
@@ -21,7 +22,6 @@ struct Question {
     let ref: DatabaseReference?
     
     init(key: String = "", category: String, type: String, difficulty: String, question: String, correct_answer: String, incorrect_answers: [String]) {
-        //self.response_code = response_code
         self.key = key
         self.category = category
         self.type = type

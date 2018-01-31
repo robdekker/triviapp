@@ -2,6 +2,9 @@
 //  LeaderboardTableViewController.swift
 //  Triviapp
 //
+//  LeaderboardTableViewController shows the top 10 daily and weekly users
+//  According to the selected index of the segmented control
+//
 //  Created by Rob Dekker on 15-01-18.
 //  Copyright © 2018 Rob Dekker. All rights reserved.
 //
@@ -17,7 +20,7 @@ class LeaderboardTableViewController: UITableViewController {
     
     // Actions
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
-        self.tableView.reloadData()
+        self.leaderboardTableView.reloadData()
     }
     
     // Properties
@@ -27,18 +30,18 @@ class LeaderboardTableViewController: UITableViewController {
     // Constants
     let usersRef = Database.database().reference(withPath: "users")
     
+    // Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateUI()
         usersRef.keepSynced(true)
         getDailyTopPlayers()
         getWeeklyTopPlayers()
-        self.tableView.rowHeight = 44;
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func updateUI() {
+        self.leaderboardTableView.rowHeight = 45.5
+        self.leaderboardTableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
     func getDailyTopPlayers() {
@@ -52,21 +55,21 @@ class LeaderboardTableViewController: UITableViewController {
                 let level = attributes["level"]
                 let dailyPoints = attributes["daily_points"]
                 let weeklyPoints = attributes["weekly_points"]
-                let timesWon = attributes["times_won"]
+                let totalPoints = attributes["total_points"]
                 let imageURL = attributes["imageURL"]
                 
                 let playerItem = Player(username: username as! String,
                                         level: level as! Int,
                                         dailyPoints: dailyPoints as! Int,
                                         weeklyPoints: weeklyPoints as! Int,
-                                        timesWon: timesWon as! Int,
+                                        totalPoints: totalPoints as! Int,
                                         imageURL: imageURL as! String)
                 
                 newDailyPlayers.append(playerItem)
                 
                 self.dailyTopPlayers = newDailyPlayers
                 self.dailyTopPlayers.sort(by: {$0.dailyPoints > $1.dailyPoints})
-                self.tableView.reloadData()
+                self.leaderboardTableView.reloadData()
             }
         })
     }
@@ -82,26 +85,24 @@ class LeaderboardTableViewController: UITableViewController {
                 let level = attributes["level"]
                 let dailyPoints = attributes["daily_points"]
                 let weeklyPoints = attributes["weekly_points"]
-                let timesWon = attributes["times_won"]
+                let totalPoints = attributes["total_points"]
                 let imageURL = attributes["imageURL"]
                 
                 let playerItem = Player(username: username as! String,
                                         level: level as! Int,
                                         dailyPoints: dailyPoints as! Int,
                                         weeklyPoints: weeklyPoints as! Int,
-                                        timesWon: timesWon as! Int,
+                                        totalPoints: totalPoints as! Int,
                                         imageURL: imageURL as! String)
                 
                 newWeeklyPlayers.append(playerItem)
                 
                 self.weeklyTopPlayers = newWeeklyPlayers
                 self.weeklyTopPlayers.sort(by: {$0.weeklyPoints > $1.weeklyPoints})
-                self.tableView.reloadData()
+                self.leaderboardTableView.reloadData()
             }
         })
     }
-
-    // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -117,13 +118,11 @@ class LeaderboardTableViewController: UITableViewController {
         default:
             break
         }
-        
         return returnValue
-            
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! LeaderboardTableViewCell
+        let cell = leaderboardTableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! LeaderboardTableViewCell
 
         // Configure the cells
         let dailyPlayerString = dailyTopPlayers[indexPath.row]
@@ -134,28 +133,48 @@ class LeaderboardTableViewController: UITableViewController {
             cell.rankLabel!.text = "\(indexPath.row + 1)"
             cell.playerNameLabel!.text = "\(dailyPlayerString.username)"
             cell.pointsLabel!.text = "\(dailyPlayerString.dailyPoints)"
+            if dailyPlayerString.imageURL != "default_profile" {
+                let url = URL(string: "\(dailyPlayerString.imageURL)")
+                cell.profileImage!.kf.setImage(with: url)
+                cell.profileImage!.layer.borderWidth = 1
+                cell.profileImage!.layer.masksToBounds = false
+                cell.profileImage!.layer.borderColor = UIColor.black.cgColor
+                cell.profileImage!.layer.cornerRadius = cell.profileImage!.frame.height/2
+                cell.profileImage!.clipsToBounds = true
+            } else {
+                cell.profileImage!.image = UIImage(named: "\(dailyPlayerString.imageURL)")
+                cell.profileImage!.layer.borderWidth = 0
+            }
             break
         case 1:
             cell.rankLabel!.text = "\(indexPath.row + 1)"
             cell.playerNameLabel!.text = "\(weeklyPlayerString.username)"
             cell.pointsLabel!.text = "\(weeklyPlayerString.weeklyPoints)"
+            if weeklyPlayerString.imageURL != "default_profile" {
+                let url = URL(string: "\(weeklyPlayerString.imageURL)")
+                cell.profileImage!.kf.setImage(with: url)
+                cell.profileImage!.layer.borderWidth = 1
+                cell.profileImage!.layer.masksToBounds = false
+                cell.profileImage!.layer.borderColor = UIColor.black.cgColor
+                cell.profileImage!.layer.cornerRadius = cell.profileImage!.frame.height/2
+                cell.profileImage!.clipsToBounds = true
+            } else {
+                cell.profileImage!.image = UIImage(named: "\(weeklyPlayerString.imageURL)")
+                cell.profileImage!.layer.borderWidth = 0
+            }
             break
         default:
             break
         }
-
         cell.playerNameLabel!.adjustsFontSizeToFitWidth = true
-
         return cell
     }
-
-    // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "listToDetail" {
             
             let profileViewController = segue.destination as! ProfileViewController
-            let index = tableView.indexPathForSelectedRow!.row
+            let index = leaderboardTableView.indexPathForSelectedRow!.row
             
             if leaderboardSegmentedControl.selectedSegmentIndex == 0 {
                 profileViewController.player = dailyTopPlayers[index]
@@ -164,6 +183,4 @@ class LeaderboardTableViewController: UITableViewController {
             }
         }
     }
-
 }
-

@@ -2,6 +2,9 @@
 //  LoginViewController.swift
 //  Triviapp
 //
+//  LoginViewController allows both email/password and Facebook login and provides the appropriate
+//  alerts if something goes wrong
+//
 //  Created by Rob Dekker on 11-01-18.
 //  Copyright © 2018 Rob Dekker. All rights reserved.
 //
@@ -16,34 +19,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var triviappLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: FBSDKLoginButton!
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        if previousViewController == "ScoreViewController" {
-            print("The previous view controller is indeed scoreviewcontroller!")
-            performSegue(withIdentifier: "loginToHome", sender: nil)
-        
-        } else {
-        
-            Auth.auth().addStateDidChangeListener() { auth, user in
-                if user != nil {
-                    print("User id:", user!.uid)
-                    self.performSegue(withIdentifier: "loginToHome", sender: nil)
-                } else {
-                    print("No user detected")
-                }
-            }
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//        if previousViewController == "ScoreViewController" {
+//            print("The previous view controller is indeed scoreviewcontroller!")
+//            performSegue(withIdentifier: "loginToHome", sender: nil)
+//        } else {
+//            Auth.auth().addStateDidChangeListener() { auth, user in
+//                if user != nil {
+//                    print("User id:", user!.uid)
+//                    self.performSegue(withIdentifier: "loginToHome", sender: nil)
+//                } else {
+//                    print("No user detected")
+//                }
+//            }
+//        }
+//    }
     
+    // Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateUI()
-        
         usersRef = Database.database().reference(withPath: "users")
-
+        
+        Auth.auth().addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "loginToHome", sender: nil)
+            }
+        }
     }
     
     // Dismiss keyboard when touching outside textfields
@@ -56,9 +60,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.setLeftPaddingPoints(30)
         passwordTextField.delegate = self
-        
-        self.triviappLabel.font = UIFont(name: "HVDComicSerifPro", size: 32)
-
+        triviappLabel.font = UIFont(name: "HVDComicSerifPro", size: 50)
     }
     
     // Navigate to next textfield when touching return key and
@@ -139,12 +141,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 "level": 1,
                                 "daily_points": 0,
                                 "weekly_points": 0,
-                                "times_won": 0,
+                                "total_points": 100,
                                 "imageURL": "default_profile",
                                 "lastTimeAnswered": ""
                                 ])
                         }
-                        
                         Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!)
                     }
                 }
@@ -180,10 +181,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            guard let accessToken = FBSDKAccessToken.current() else {
-                print("Failed to get access token")
-                return
-            }
+            guard let accessToken = FBSDKAccessToken.current() else { return }
             
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             
@@ -201,29 +199,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 let userID = Auth.auth().currentUser?.uid
                 
-                self.usersRef.child(userID!).observeSingleEvent(of: .value, with: {(snapshot) in
+                self.usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
                     guard !snapshot.exists() else { return }
 
                     let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email, picture.type(large)"])
-                        let _ = request?.start(completionHandler: { (connection, result, error) in
-                            guard let userInfo = result as? [String: Any] else { return } //handle the error
+                    let _ = request?.start(completionHandler: { (connection, result, error) in
+                        guard let userInfo = result as? [String: Any] else { return }
                             
-                            // Get user info current facebook user
-                            if let username = userInfo["name"] as? String,
-                                let imageURL = ((userInfo["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
-                    
+                        // Get user info current facebook user
+                        if let username = userInfo["name"] as? String,
+                            let imageURL = ((userInfo["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
+                
                             // Create new entry in Firebase when Facebook user logs in for the first time
                             self.usersRef.child(userID!).setValue([
                                 "username": username,
                                 "level": 1,
                                 "daily_points": 0,
                                 "weekly_points": 0,
-                                "times_won": 0,
+                                "total_points": 100,
                                 "imageURL": "\(imageURL)",
                                 "lastTimeAnswered": ""
                                 ])
-                            }
-                        })
+                        }
+                    })
                 })
                 
                 // Present the main view
@@ -239,13 +237,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var user: User!
     var usersRef: DatabaseReference!
     var previousViewController: String!
-
-    // Constants
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // Check if email is valid, used example from stackoverflow
     func isValidEmail(email:String) -> Bool {

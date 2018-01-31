@@ -2,6 +2,8 @@
 //  ProfileViewController.swift
 //  Triviapp
 //
+//  ProfileViewController shows all properties of the selected or current user
+//
 //  Created by Rob Dekker on 12-01-18.
 //  Copyright © 2018 Rob Dekker. All rights reserved.
 //
@@ -25,18 +27,13 @@ class ProfileViewController: UIViewController {
     @IBAction func signOutButtonTapped(_ sender: Any) {
         do {
             if FBSDKAccessToken.current() != nil {
-                
                 FBSDKLoginManager().logOut()
                 print("Facebook account logged out")
-                
             } else {
-                
                 try Auth.auth().signOut()
                 print("Normal account logged out")
             }
-            
             performSegue(withIdentifier: "unwindToLogin", sender: self)
-        
         } catch {
             print("Error logging out")
         }
@@ -46,29 +43,32 @@ class ProfileViewController: UIViewController {
     var user: User!
     var usersRef = Database.database().reference()
     var player: Player!
-
-    // Constants
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         updateUI()
     }
     
     func updateUI() {
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "HVDComicSerifPro", size: 20)! ]
+        self.navigationController?.navigationBar.titleTextAttributes = [ .font: UIFont(name: "HVDComicSerifPro", size: 20)!, .foregroundColor: UIColor.white ]
         // It is another user than the current user
         if player != nil {
             self.navigationItem.rightBarButtonItem = nil
 
             self.usernameLabel.text = player.username
-            self.usernameLabel.adjustsFontSizeToFitWidth = true
-            self.usernameLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
             self.usernameLabel.textColor = .black
             self.levelLabel.text = "Level: \(player.level)"
-            self.levelLabel.textColor = .black
+            self.usernameLabel.textColor = .black
             self.dailyPointsLabel.text = "\(player.dailyPoints)"
             self.weeklyPointsLabel.text = "\(player.weeklyPoints)"
+            
+            if player.imageURL != "default_profile" {
+                let url = URL(string: "\(player.imageURL)")
+                self.backgroundProfileImage.kf.setImage(with: url)
+                self.profileImage!.kf.setImage(with: url)
+            } else {
+                self.profileImage!.image = UIImage(named: "\(player.imageURL)")
+            }
         
         // Update labels to info of current user
         } else {
@@ -86,8 +86,6 @@ class ProfileViewController: UIViewController {
                 
                 // Set labels retrieved from Firebase
                 self.usernameLabel.text = username
-                self.usernameLabel.adjustsFontSizeToFitWidth = true
-                self.usernameLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
                 self.levelLabel.text = "Level: \(level)"
                 self.dailyPointsLabel.text = "\(dailyPoints)"
                 self.weeklyPointsLabel.text = "\(weeklyPoints)"
@@ -95,22 +93,23 @@ class ProfileViewController: UIViewController {
                 // Use KingFisher to download and cache the image
                 self.backgroundProfileImage.kf.setImage(with: url)
                 self.profileImage.kf.setImage(with: url)
-                self.profileImage.layer.borderWidth = 1
-                self.profileImage.layer.masksToBounds = false
-                self.profileImage.layer.borderColor = UIColor.black.cgColor
-                self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
-                self.profileImage.clipsToBounds = true
-                
-                // Add blur to background profile image
-                let blurEffect = UIBlurEffect(style: .light)
-                let blurredEffectView = UIVisualEffectView(effect: blurEffect)
-                blurredEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                blurredEffectView.frame = self.backgroundProfileImage.bounds
-                self.backgroundProfileImage.addSubview(blurredEffectView)
-                
-            }) { (error) in
-                print(error.localizedDescription)
-            }
+            })
         }
+        self.usernameLabel.adjustsFontSizeToFitWidth = true
+        self.profileImage!.layer.borderWidth = 1
+        self.profileImage!.layer.masksToBounds = false
+        self.profileImage!.layer.borderColor = UIColor.black.cgColor
+        self.profileImage!.layer.cornerRadius = self.profileImage!.frame.height/2
+        self.profileImage!.clipsToBounds = true
+        self.addBlur(image: self.backgroundProfileImage)
+    }
+    
+    // Add blur to background profile image
+    func addBlur(image: UIImageView) {
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        blurredEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurredEffectView.frame = image.bounds
+        image.addSubview(blurredEffectView)
     }
 }

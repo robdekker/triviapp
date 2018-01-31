@@ -72,9 +72,11 @@
 # Monday 29-01 & Tuesday 30-01
 * I've been sick these days.
 
-## Things I still have to implement in my app:
-* UIImagePicker to change profile picture and save it in Firebase Storage
-* Bug: ScoreViewController to HomeViewController unwind segue
-* Bug: fetched questions of type “Question” can not be pushed to Firebase, only supports types NSNumber, NSString, NSDictionary, and NSArray.
-* Bug: Facebook user log out second time does not work (segue is not performed)
+# Wednesday 31-01
+* Cleaned and restructured all code.
+* Made some more necessary comments.
+* Changed the design and implemented some animations to make it look more like a game.
 
+## Things I still have to implement in my app:
+* Bug: ScoreViewController to HomeViewController unwind segue
+* Bug: Facebook user log out second time does not work (segue is not performed)

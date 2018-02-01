@@ -7,7 +7,7 @@
 ## A short description of the application
 Challenge your friends every single week of the year with this application! Triviapp is a game where players are able to compete with eachother by answering questions from the Open Trivia Database. In order to make this a fair "fight", all players will get the same questions per day.  
 
-**Screenshot**  
+**Screenshots**  
 <img src="doc/screenshot_report1.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report2.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report3.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report4.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report5.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report6.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report7.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report8.PNG" alt="screenshot" width="175" height="300">
 
 ## Technical design
@@ -21,7 +21,7 @@ I've spend some time to create a goodlooking design for the login screen. When t
 
 ### Home screen
 There is a lot going on at the Home screen, because it checks various variables in order to determine whether the user has some questions to play or not. First of all, it presents the user that is logged in, these values come from Firebase. Afterwards, a function is called which retrieves data about the questions that are in Firebase, or not. There is data about the date the questions were fetched, the current date and the current weekday (this is an integer). According to these values, a second function is called which determines what to do: 
-* If there are questions in Firebase, check if the current day is monday so all daily and weekly points need a reset and new questions need to be fetched from the API and afterwards send to Firebase with the current date and weekday. 
+* If there are questions in Firebase, check if the current day is monday so all daily and weekly points need a reset and new questions need to be fetched from the API and afterwards send to Firebase with the current date and weekday. Also, check if the reset is already done, because then you need to get the questions from Firebase. 
 * If the current day is not monday, it needs to check if the questions were fetched from the API today. If they were, get these from Firebase if the user have not answered them already, otherwise say "No questions available". If they were fetched another day, fetch new questions from the API, send them to Firebase afterwards with the current date and weekday, and reset the daily points of all players.
 * If there are no questions stored in Firebase at all, new questions will be fetched. This will occur only the first time the app is in use.
 Tapping on the "start quiz" button will immediately change the value of lastTimeAnswered to the current day, so cheating is not possible (like closing and reopening the app). The questions, wheter fetched from the API or from Firebase, will be presented in the Question screen due to the ```prepare(for segue:)```. Finally, I've implemented an animation to get the user's attention to the "start quiz" button if it is enabled.
@@ -50,17 +50,31 @@ The Question struct stores all possible attributes of a question that are fetche
 ### Player.swift
 The Player struct stores all possible attributes of a user that is stored in Firebase.
 
-### Info.plistset
+### Info.plist
 In the folder *Resources* I have added a custom Font family named *HVD_Comic_Serif_Pro*. In order to be able to use this custom Font family, I had to add an entry in the Information Property List named *Fonts provided by application*. This Font helps to create a design that fits better when creating a game. I also had to add several entries to be able to use Facebook login. In the Info.plist, I have set the *App Transport Security Settings* as well.
+
 
 ## Challenges
 
-### Wireflow
-With regard to my design document, I haven't implemented the PlayerDetailViewController. During the process of creating the wireflow of my application, I found out that it was possible to link to the ProfileViewController and check whether it is the current user or another user. So both cases are possible to view on one ViewController.
+### Inspiration
+In the first week, when we needed to design the concept of the application, I had no inspirations at all. I think that it would help if you knew beforehand what you exactly wanted to do. Or maybe if the assistants could help a little, to push you in the right direction.
 
-### Building the app
+### Wireflow
+With regard to my design document, I haven't implemented the PlayerDetailViewController. During the process of creating the wireflow of my application, I found out that it was possible to link from the LeaderboardTableView to the ProfileViewController and to check whether it is the current user or another user. So both cases are possible to view on one ViewController.
+
+### Back-end
+The biggest challenge was that almost everything happens on the background of my app. It was hard to test if my application was actually working (if it did what it had to do).
+
+### Table view with segmented control
+It was a real challenge to implement a segmented control that changes the content of the table view. This cost me a lot of time and effort. But when I finally managed to accomplish this, I was really content. 
+
+### Extra features
+An impossible challenges for me was (in this timespan) to implement the function that players can play with something at stake.
 
 ## Decisions
 
 ### In an ideal world
-In an ideal world, with much more time and especially much more MONEY, I would choose to buy a laptop that can handle Xcode without any problems. It took so incredibly long every time to build the application and the program (and my Mac) often froze.
+In an ideal world, with much more time and especially much more MONEY, I would choose to buy a laptop that can handle Xcode without any problems. It took so incredibly long every time to build the application and the program (and my Mac) often froze. Therefore it took a lot longer to implement something in my app. Also, if I had more time, I would add some extra more features like implementing the function that players can play with something at stake. This is hard to implement though, but it would be nice if you can link it for example with a "tikkie" and send a request to the other player(s). At the other hand, it is not very realistic since it is just a game.
+
+### Design
+In the beginning I thought it would be nice if I had a very elegant design. But as I was creating the application, it felt not really like a game, and that was the purpose! So I needed to make it more feel like a game, and I think I did that really well by choosing the right colors, animations and the right Font family!

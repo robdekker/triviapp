@@ -25,11 +25,12 @@ Every day of the week users are able to answer 10 questions. These questions are
 ## Prerequisites
 
 *Data source(s)*  
-Open Trivia Database is a free-to-use user-contributed trivia question database. https://opentdb.com/  
-Open Trivia Database is licensed under CC BY-SA 4.0.
+https://opentdb.com/   
+Open Trivia Database is a free-to-use user-contributed trivia question database.  
+Open Trivia Database is licensed under CC BY-SA 4.0.  
 
 *External component(s)*  
-Firebase is used to be able to authenticate users and save (user) data.
+Firebase is used to be able to authenticate users and save (user) data.  
 Kingfisher is used to asynchronous download and cache images. (Kingfisher is licensed under MIT license.)
 
 ## Better Code Hub

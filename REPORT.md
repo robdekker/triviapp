@@ -8,7 +8,7 @@
 Challenge your friends every single week of the year with this application! Triviapp is a game where players are able to compete with eachother by answering questions from the Open Trivia Database. In order to make this a fair "fight", all players will get the same questions per day.  
 
 **Screenshot**  
-<img src="doc/screenshot_report1.PNG" alt="screenshot" width="115" height="200"> <img src="doc/screenshot_report2.PNG" alt="screenshot" width="115" height="200"> <img src="doc/screenshot_report3.PNG" alt="screenshot" width="115" height="200"> <img src="doc/screenshot_report4.PNG" alt="screenshot" width="115" height="200"> <img src="doc/screenshot_report5.PNG" alt="screenshot" width="115" height="200"> <img src="doc/screenshot_report6.PNG" alt="screenshot" width="115" height="200"> <img src="doc/screenshot_report7.PNG" alt="screenshot" width="115" height="200"> <img src="doc/screenshot_report8.PNG" alt="screenshot" width="115" height="200">
+<img src="doc/screenshot_report1.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report2.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report3.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report4.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report5.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report6.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report7.PNG" alt="screenshot" width="175" height="300"> <img src="doc/screenshot_report8.PNG" alt="screenshot" width="175" height="300">
 
 ## Technical design
 

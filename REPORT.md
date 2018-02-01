@@ -52,3 +52,15 @@ The Player struct stores all possible attributes of a user that is stored in Fir
 
 ### Info.plistset
 In the folder *Resources* I have added a custom Font family named *HVD_Comic_Serif_Pro*. In order to be able to use this custom Font family, I had to add an entry in the Information Property List named *Fonts provided by application*. This Font helps to create a design that fits better when creating a game. I also had to add several entries to be able to use Facebook login. In the Info.plist, I have set the *App Transport Security Settings* as well.
+
+## Challenges
+
+### Wireflow
+With regard to my design document, I haven't implemented the PlayerDetailViewController. During the process of creating the wireflow of my application, I found out that it was possible to link to the ProfileViewController and check whether it is the current user or another user. So both cases are possible to view on one ViewController.
+
+### Building the app
+
+## Decisions
+
+### In an ideal world
+In an ideal world, with much more time and especially much more MONEY, I would choose to buy a laptop that can handle Xcode without any problems. It took so incredibly long every time to build the application and the program (and my Mac) often froze.

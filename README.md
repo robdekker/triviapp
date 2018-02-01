@@ -4,6 +4,8 @@
 **Name:** Rob Dekker  
 **Summary:** Compete with your friends in this trivia game every single week of the year.  
 
+## Product video
+[![product video](https://img.youtube.com/vi/kDbf57RRqrg/0.jpg)](https://www.youtube.com/watch?v=kDbf57RRqrg "Product video")
 
 ## Description
 With current trivia games you can’t compete with other users on a daily basis. There is a leaderboard, but you can’t really win something. This mobile application is made for people who love to play a game at which there is more at stake than “just” honour.

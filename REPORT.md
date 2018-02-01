@@ -31,3 +31,24 @@ For every question in the list of questions, all labels and buttons will be upda
 
 ### Score screen
 Here, the user get's his/her feedback on the just finished daily quiz. A label, which covers the most of the screen, represents the amount of points gathered out of 10 (the total amount of points that can be collected). In addition, there are stars presented. The amount of colored stars is equal to the amount of points gathered. I've added a delay to this, so that it gets a fluent animation. The user then has to unwind to the Home screen.
+
+### Leaderboard screen
+All users are stored in Firebase with their current daily and weekly points. In the Leaderboard screen, a table view loads the current daily and weekly top 10 players, respectively based on their daily and weekly points. The database reference keeps synchronised so that the table view gets updated whenever a value has changed. I have also implemented a segmented control, so that it is easily to switch between the current daily top players and the current weekly top players. A seperate swift file named ```LeaderboardTableViewCell.swift``` stores a couple of labels and an image, in order to create a custom table view cell. Clicking on a table view cell will create a segue to the corresponding user's Profile screen.
+
+### Profile screen
+There are a couple of values that can be presented of a player, such as the username, level, current daily and weekly points, and the profile picture. The ```func updateUI()``` checks whether it is another player or the current user before setting the labels. There is added a background image behind the profile picture, that represents the profile picture but has been blurred to improve the design. Ofcourse, when another player than the current user is presented, the sign out button will be hidden, so uncertainties are avoided. The sign out button distinguishes a Facebook user from a "normal" user when signing out. Apart from this, I have implemented the Kingfisher module. The Kingfisher module features asynchronous image downloading and caching, and it is very easy to use.
+
+### ItemController
+This is where the questions are fetched from the API. It is a JSON dictionary from where the category, question, correct answer and incorrect answers are retrieved. These values are then translated to a Question object and appended to a list. Just before they are appended, the question and corresponding answers needed to be decoded. I have manually set up a dictionary with HTML/XML entities.
+
+### User.swift
+The User struct represents the user and has an initializer provided by Firebase. The user ID and email are used to create user authentication.
+
+### Question.swift
+The Question struct stores all possible attributes of a question that are fetched from the API.
+
+### Player.swift
+The Player struct stores all possible attributes of a user that is stored in Firebase.
+
+### Info.plistset
+In the folder *Resources* I have added a custom Font family named *HVD_Comic_Serif_Pro*. In order to be able to use this custom Font family, I had to add an entry in the Information Property List named *Fonts provided by application*. This Font helps to create a design that fits better when creating a game. I also had to add several entries to be able to use Facebook login. In the Info.plist, I have set the *App Transport Security Settings* as well.

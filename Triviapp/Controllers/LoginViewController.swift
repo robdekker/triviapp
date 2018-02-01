@@ -20,25 +20,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    override func viewDidAppear(_ animated: Bool) {
-        Auth.auth().addStateDidChangeListener() { auth, user in
-            if user != nil {
-                self.performSegue(withIdentifier: "loginToHome", sender: nil)
-            }
-        }
-    }
-    
     // Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         usersRef = Database.database().reference(withPath: "users")
         
-//        Auth.auth().addStateDidChangeListener() { auth, user in
-//            if user != nil {
-//                self.performSegue(withIdentifier: "loginToHome", sender: nil)
-//            }
-//        }
+        Auth.auth().addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "loginToHome", sender: nil)
+            }
+        }
     }
     
     // Dismiss keyboard when touching outside textfields

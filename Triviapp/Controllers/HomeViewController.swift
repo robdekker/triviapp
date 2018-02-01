@@ -178,7 +178,7 @@ class HomeViewController: UIViewController {
                         for user in usersDict {
                             self.usersRef.child(user.key).updateChildValues([
                                 "daily_points": 0
-                                ])
+                            ])
                         }
                     })
                 }
@@ -207,7 +207,7 @@ class HomeViewController: UIViewController {
                 "questions": self.newQuestions,
                 "date": self.currentDate,
                 "weekday": self.currentWeekday
-                ])
+            ])
         }
     }
 

@@ -76,7 +76,9 @@
 * Cleaned and restructured all code.
 * Made some more necessary comments.
 * Changed the design and implemented some animations to make it look more like a game.
+* Started working on REPORT.md
 
-## Things I still have to implement in my app:
-* Bug: ScoreViewController to HomeViewController unwind segue
-* Bug: Facebook user log out second time does not work (segue is not performed)
+# Thursday 01-02-18
+* Made some last changes on the design
+* Finished REPORT.md
+* Made a product video

@@ -20,22 +20,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//        if previousViewController == "ScoreViewController" {
-//            print("The previous view controller is indeed scoreviewcontroller!")
-//            performSegue(withIdentifier: "loginToHome", sender: nil)
-//        } else {
-//            Auth.auth().addStateDidChangeListener() { auth, user in
-//                if user != nil {
-//                    print("User id:", user!.uid)
-//                    self.performSegue(withIdentifier: "loginToHome", sender: nil)
-//                } else {
-//                    print("No user detected")
-//                }
-//            }
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        Auth.auth().addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "loginToHome", sender: nil)
+            }
+        }
+    }
     
     // Functions
     override func viewDidLoad() {
@@ -43,11 +34,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         updateUI()
         usersRef = Database.database().reference(withPath: "users")
         
-        Auth.auth().addStateDidChangeListener() { auth, user in
-            if user != nil {
-                self.performSegue(withIdentifier: "loginToHome", sender: nil)
-            }
-        }
+//        Auth.auth().addStateDidChangeListener() { auth, user in
+//            if user != nil {
+//                self.performSegue(withIdentifier: "loginToHome", sender: nil)
+//            }
+//        }
     }
     
     // Dismiss keyboard when touching outside textfields
@@ -76,9 +67,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Actions
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
-    }
-    
-    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -176,10 +164,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func facebookLogin(sender: UIButton) {
         let fbLoginManager = FBSDKLoginManager()
         fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
-            if let error = error {
-                print("Failed to login: \(error.localizedDescription)")
-                return
-            }
             
             guard let accessToken = FBSDKAccessToken.current() else { return }
             
@@ -188,7 +172,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             // Perform login by calling Firebase APIs
             Auth.auth().signIn(with: credential, completion: { (user, error) in
                 if let error = error {
-                    print("Login error: \(error.localizedDescription)")
                     let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
                     let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(okayAction)
@@ -202,7 +185,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
                     guard !snapshot.exists() else { return }
 
-                    let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email, picture.type(large)"])
+                    let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, picture.type(large)"])
                     let _ = request?.start(completionHandler: { (connection, result, error) in
                         guard let userInfo = result as? [String: Any] else { return }
                             

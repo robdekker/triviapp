@@ -585,7 +585,6 @@
                                 <state key="normal" title="Go back to home"/>
                                 <connections>
                                     <action selector="backToHomeButtonTapped:" destination="dZJ-aM-b0N" eventType="touchUpInside" id="xND-DS-TOR"/>
-                                    <segue destination="Zxu-w6-mjR" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeWithSegue:" id="h1s-iB-hEC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLT-qa-jsb">
@@ -652,10 +651,10 @@
                     </view>
                     <connections>
                         <outlet property="scoreLabel" destination="VCp-Mn-Zjn" id="Sls-2e-LIg"/>
+                        <segue destination="5Jp-hh-TAN" kind="show" identifier="unwindToHome" id="8Sd-5P-fst"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxd-X2-Gaa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Zxu-w6-mjR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5119" y="-605"/>
         </scene>
@@ -868,6 +867,7 @@
         <image name="username" width="231" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="8Sd-5P-fst"/>
         <segue reference="rki-gV-zAu"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

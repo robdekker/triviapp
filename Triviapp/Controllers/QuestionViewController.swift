@@ -59,11 +59,7 @@ class QuestionViewController: UIViewController {
         // As long as there are questions, show next question
         if currentQuestion != questionsDict.count {
             newQuestion()
-            
-        // If the last questions is shown
-        } else if currentQuestion == questionsDict.count - 1 {
-            self.nextQuestionButton.titleLabel?.text = "Show score"
-            
+
         // No questions left
         } else {
             performSegue(withIdentifier: "showScore", sender: self)
@@ -77,7 +73,6 @@ class QuestionViewController: UIViewController {
     var points = 0
     var seconds = 20
     var timer = Timer()
-    var lastTimeAnswered = String()
     
     // Constants
     let usersRef = Database.database().reference().child("users")
@@ -104,7 +99,6 @@ class QuestionViewController: UIViewController {
     func newQuestion() {
         seconds = 20
         self.navigationItem.title = "\(questionsDict[currentQuestion].category)"
-        self.view.backgroundColor = .white
         questionLabel.text = "\(questionsDict[currentQuestion].question)"
         correctAnswerLabel.text = "\(questionsDict[currentQuestion].correct_answer)"
         timerLabel.text = "\(seconds)"

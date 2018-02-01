@@ -17,7 +17,7 @@ class ScoreViewController: UIViewController {
     
     // Actions
     @IBAction func backToHomeButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToHome", sender: self)
+        self.performSegue(withIdentifier: "unwindToHome", sender: self)
     }
     
     // Properties
@@ -38,19 +38,11 @@ class ScoreViewController: UIViewController {
             // Amount of points is equal to amount of stars
             for tag in 1...self.points {
                 // Usage of a delay for the stars to appear in order to smooth visualisation
-                DispatchQueue.main.asyncAfter(deadline: .now() + Double(0.5 * Double(tag))) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(0.2 * Double(tag))) {
                     starImage = self.view.viewWithTag(tag) as! UIImageView
                     starImage.image = UIImage(named: "star_rating")
                 }
             }
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "unwindToHome" {
-            let loginViewController = segue.destination as! LoginViewController
-            loginViewController.previousViewController = "ScoreViewController"
-        }
-    }
-
 }

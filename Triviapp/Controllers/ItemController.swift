@@ -14,19 +14,17 @@ class ItemController {
     
     static let shared = ItemController()
     
-    let baseURL = URL(string: "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple")!
+    let baseURL = URL(string: "https://opentdb.com/api.php?amount=10")!
     
     func fetchQuestions(completion: @escaping ([Question]?) -> Void) {
         var questions = [Question]()
-        let questionURL = baseURL.appendingPathComponent("")
+        let questionURL = baseURL.appendingPathComponent("&difficulty=easy&type=multiple")
         let task = URLSession.shared.dataTask(with: questionURL) { (data, response, error) in
             if let data = data,
                 let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                 let fetchedQuestions = jsonDictionary!["results"] as? [[String: Any]] {
                 for question in fetchedQuestions {
                     if let category = question["category"] as? String,
-                        let type = question["type"] as? String,
-                        let difficulty = question["difficulty"] as? String,
                         let theQuestion = question["question"] as? String,
                         let correctAnswer = question["correct_answer"] as? String,
                         let incorrectAnswers = question["incorrect_answers"] as? [String] {
@@ -40,7 +38,7 @@ class ItemController {
                             incorrectAnswersDecoded.append(answerDecoded)
                         }
                         
-                        questions.append(Question(category: category, type: type, difficulty: difficulty, question: theQuestionDecoded, correct_answer: correctAnswerDecoded, incorrect_answers: incorrectAnswersDecoded))
+                        questions.append(Question(category: category, question: theQuestionDecoded, correct_answer: correctAnswerDecoded, incorrect_answers: incorrectAnswersDecoded))
                     }
                 }
                 completion(questions)

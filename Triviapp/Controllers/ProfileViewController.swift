@@ -26,16 +26,14 @@ class ProfileViewController: UIViewController {
     // Actions
     @IBAction func signOutButtonTapped(_ sender: Any) {
         do {
+            // A Facebook user is logged in
             if FBSDKAccessToken.current() != nil {
                 FBSDKLoginManager().logOut()
-                print("Facebook account logged out")
+            // A normal user is logged in
             } else {
-                try Auth.auth().signOut()
-                print("Normal account logged out")
+                try? Auth.auth().signOut()
             }
             performSegue(withIdentifier: "unwindToLogin", sender: self)
-        } catch {
-            print("Error logging out")
         }
     }
     
